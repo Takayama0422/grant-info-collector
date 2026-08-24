@@ -1,0 +1,18 @@
+{
+  "settings": {
+    "timeoutMs": 15000,
+    "delayBetweenSourcesMs": 1000,
+    "allowAuthenticatedSources": false,
+    "outputFormats": ["csv", "xlsx"]
+  },
+  "sources": [
+    {
+      "name": "サンプル情報源",
+      "type": "html",
+      "url": "https://example.com/grants",
+      "category": "補助金",
+      "region": "全国",
+      "authRequired": false
+    }
+  ]
+}

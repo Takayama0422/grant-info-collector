@@ -1,0 +1,27 @@
+services:
+  collector:
+    build:
+      context: .
+    init: true
+    user: "10001:10001"
+    working_dir: /workspace
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    pids_limit: 128
+    mem_limit: 512m
+    cpus: 1.0
+    environment:
+      GRANT_COLLECTOR_CONFIG: "/workspace/config/sources.json"
+    volumes:
+      - .:/workspace:ro
+      - ./reports:/workspace/reports:rw
+    networks:
+      - collector_egress
+
+networks:
+  collector_egress: {}

@@ -1,0 +1,17 @@
+node_modules/
+.DS_Store
+
+# 実行時の成果物（reports/sample のみ成果例として追跡する）
+reports/runs/
+reports/latest/
+reports/latest.json
+reports/test/
+
+# 認証情報（.env.local のような派生名も含めて除外する）
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.p12

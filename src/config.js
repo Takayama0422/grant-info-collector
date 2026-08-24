@@ -27,12 +27,26 @@ function validateSource(source, index) {
   if (!name) throw new Error(`sources[${index}].name は必須です。`);
   if (!type) throw new Error(`sources[${index}].type は必須です。`);
   if (!url) throw new Error(`sources[${index}].url は必須です。`);
+  const maxOrganizations = source.maxOrganizations ?? 3;
+  const maxPages = source.maxPages ?? 1;
+  if (!Number.isInteger(maxOrganizations) || maxOrganizations < 1) {
+    throw new Error(`sources[${index}].maxOrganizations は1以上の整数である必要があります。`);
+  }
+  if (!Number.isInteger(maxPages) || maxPages < 1) {
+    throw new Error(`sources[${index}].maxPages は1以上の整数である必要があります。`);
+  }
   return {
     name,
     type,
     url,
+    // 検索キーワード。省略時は名前をそのまま使わず空にして、意図しない全件取得を避ける。
+    query: source.query ?? '',
     category: source.category ?? '',
     region: source.region ?? '',
+    organizationLabel: source.organizationLabel ?? '',
+    // 相手への負担を抑えるため、1回の実行で辿る組織数とページ数に上限を設ける。
+    maxOrganizations,
+    maxPages,
     authRequired: source.authRequired === true,
   };
 }

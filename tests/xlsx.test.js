@@ -39,3 +39,24 @@ test('xlsxを書き出して読み戻せる', async () => {
 
   fs.rmSync(directory, { recursive: true, force: true });
 });
+
+test('出典・利用条件のシートをブック内に持つ', async () => {
+  const { NOTICE_SHEET_NAME } = require('../src/xlsx');
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'grant-xlsx-notice-'));
+  const filePath = path.join(directory, 'grants.xlsx');
+
+  await writeXlsx(filePath, [{ title: 'テスト' }], { extraNoticeRows: [['収集件数', '1']] });
+
+  const workbook = new ExcelJS.Workbook();
+  await workbook.xlsx.readFile(filePath);
+  const sheet = workbook.getWorksheet(NOTICE_SHEET_NAME);
+  assert.ok(sheet, '出典シートがありません');
+
+  const text = sheet.getSheetValues().flat().filter((value) => typeof value === 'string').join('\n');
+  assert.match(text, /e-Govデータポータル/);
+  assert.match(text, /公共データ利用規約/);
+  assert.match(text, /加工主体/);
+  assert.match(text, /収集件数/);
+
+  fs.rmSync(directory, { recursive: true, force: true });
+});

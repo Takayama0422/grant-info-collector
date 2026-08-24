@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grant Info Collector｜補助金・助成金 公募情報 収集ツール</title>
+<meta name="description" content="公共データを情報源に、補助金・助成金の公募情報を収集しCSV/XLSXへ整形するツールのポートフォリオページ。">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='8' y='10' width='48' height='44' rx='4' fill='%232f6f5e'/%3E%3Crect x='16' y='20' width='32' height='4' fill='%23fff'/%3E%3Crect x='16' y='30' width='32' height='4' fill='%23fff'/%3E%3Crect x='16' y='40' width='20' height='4' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f7f8f6;
+    --bg-elevated: #ffffff;
+    --bg-muted: #eef1ee;
+    --text: #1b2420;
+    --text-muted: #4d5a53;
+    --border: #d8ddd8;
+    --accent: #2f6f5e;
+    --accent-strong: #21503f;
+    --accent-contrast: #ffffff;
+    --warn-bg: #fff4e0;
+    --warn-border: #d9a441;
+    --warn-text: #6b4a06;
+    --code-bg: #eef1ee;
+    --shadow: 0 1px 2px rgba(20, 30, 25, 0.06), 0 8px 24px rgba(20, 30, 25, 0.06);
+    --radius: 12px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #121815;
+      --bg-elevated: #1a221d;
+      --bg-muted: #202a24;
+      --text: #e8ede9;
+      --text-muted: #a7b3ac;
+      --border: #2b352f;
+      --accent: #5bc4a4;
+      --accent-strong: #7fd6ba;
+      --accent-contrast: #0c1512;
+      --warn-bg: #2a2412;
+      --warn-border: #8a6a1f;
+      --warn-text: #f0cf80;
+      --code-bg: #202a24;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #121815;
+    --bg-elevated: #1a221d;
+    --bg-muted: #202a24;
+    --text: #e8ede9;
+    --text-muted: #a7b3ac;
+    --border: #2b352f;
+    --accent: #5bc4a4;
+    --accent-strong: #7fd6ba;
+    --accent-contrast: #0c1512;
+    --warn-bg: #2a2412;
+    --warn-border: #8a6a1f;
+    --warn-text: #f0cf80;
+    --code-bg: #202a24;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Segoe UI", Roboto, sans-serif;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  a { color: var(--accent-strong); }
+  a:hover { text-decoration-thickness: 2px; }
+
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .sample-bar {
+    background: var(--accent-strong);
+    color: var(--accent-contrast);
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    margin: 0;
+  }
+  .sample-bar strong { font-weight: 700; }
+
+  header.hero {
+    padding: 56px 0 40px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+    background: var(--bg-muted);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px 12px;
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    line-height: 1.35;
+    margin: 0 0 16px;
+  }
+
+  .lead {
+    font-size: clamp(1rem, 2.2vw, 1.15rem);
+    color: var(--text-muted);
+    max-width: 60ch;
+    margin: 0 0 24px;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 1px solid transparent;
+  }
+  .btn--primary {
+    background: var(--accent);
+    color: var(--accent-contrast);
+  }
+  .btn--primary:hover { background: var(--accent-strong); }
+  .btn--ghost {
+    background: transparent;
+    color: var(--text);
+    border-color: var(--border);
+  }
+  .btn--ghost:hover { border-color: var(--accent); }
+
+  section {
+    padding: 40px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  h2 {
+    font-size: clamp(1.25rem, 3vw, 1.6rem);
+    margin: 0 0 8px;
+  }
+
+  .section-note {
+    color: var(--text-muted);
+    margin: 0 0 24px;
+    font-size: 0.95rem;
+  }
+
+  /* 処理の流れ（素のHTML/CSSのみ） */
+  .flow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: stretch;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .flow li {
+    flex: 1 1 150px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 16px;
+    position: relative;
+  }
+  .flow li .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--accent-contrast);
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .flow li h3 {
+    font-size: 0.95rem;
+    margin: 0 0 6px;
+  }
+  .flow li p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+  .flow-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    flex: 0 0 auto;
+    padding: 0 2px;
+  }
+  @media (max-width: 640px) {
+    .flow { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); padding: 4px 0; }
+  }
+
+  /* 出力サンプル表 */
+  .table-scroll {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-elevated);
+    box-shadow: var(--shadow);
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 760px;
+    font-size: 0.85rem;
+  }
+  caption {
+    caption-side: top;
+    text-align: left;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    padding: 12px 16px 0;
+  }
+  th, td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    white-space: nowrap;
+  }
+  thead th {
+    background: var(--bg-muted);
+    font-weight: 700;
+    position: sticky;
+    top: 0;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  td.placeholder-cell {
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* 実行結果ステータス */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+  }
+  .stat-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 18px;
+  }
+  .stat-card .stat-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0 0 6px;
+  }
+  .stat-card .stat-value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0;
+  }
+  .stat-card .stat-value.is-pending {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+
+  .notice {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    color: var(--warn-text);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    font-size: 0.9rem;
+    margin-top: 20px;
+  }
+
+  code, pre {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.85em;
+  }
+  code {
+    background: var(--code-bg);
+    border-radius: 4px;
+    padding: 2px 6px;
+  }
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    overflow-x: auto;
+  }
+
+  .link-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 10px;
+  }
+  .link-list li {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+  }
+
+  ul.plain, ol.plain {
+    padding-left: 1.2em;
+    margin: 0;
+  }
+  ul.plain li, ol.plain li { margin-bottom: 8px; }
+
+  footer {
+    padding: 32px 0 56px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+</style>
+</head>
+<body>
+
+<p class="sample-bar" role="note">
+  <strong>ポートフォリオ用サンプル</strong>&nbsp;— 公共データを情報源とする業務自動化ツールの制作実績です。
+</p>
+
+<header class="hero">
+  <div class="container">
+    <span class="eyebrow">業務自動化ツール</span>
+    <h1>補助金・助成金の公募情報を、<br class="pc-only">自動で収集して表にする。</h1>
+    <p class="lead">
+      e-Govデータポータル（デジタル庁）の公開データから、補助金・助成金・入札公募に関する情報を集め、
+      CSVとXLSXの表に整形して出力します。府省ごとにばらばらのページを1件ずつ開いて
+      Excel へ書き写していた調べ物が、コマンド1つに置き換わります。
+      <strong>107件の収集を 132.6 秒（実測）で完了します。</strong>
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn--primary" href="reports/example-run/grants.csv">出力CSVを見る（107件・実物）</a>
+      <a class="btn btn--ghost" href="README.md">README を読む</a>
+      <a class="btn btn--ghost" href="docs/measurement.md">計測の生記録を見る</a>
+      <a class="btn btn--ghost" href="docs/compliance.md">規約確認の記録を見る</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section id="what">
+    <div class="container">
+      <h2>このツールが何をするか</h2>
+      <p class="section-note">
+        設定ファイルに登録したキーワードで公開カタログを順番に検索し、
+        公募名・実施主体・分類・対象地域・概要・データ形式・更新日・詳細URLを1件ずつ抜き出して、
+        1枚の表（CSV / XLSX）にまとめて出力します。ネットワークに接続できない環境でも、
+        同梱した応答の写しから<strong>まったく同じ107件</strong>を再生成できます（実測 0.1 秒）。
+      </p>
+      <ul class="plain">
+        <li>情報源ごとの巡回間隔・タイムアウトなどは設定ファイル（<code>config/sources.json</code>）で調整できます。</li>
+        <li>認証が必要な情報源は既定で拒否します（明示的に許可した場合のみ対象にできます）。</li>
+        <li>取得元の利用規約・<code>robots.txt</code> を事前確認できなかった情報源は対象にしません。</li>
+        <li><strong>金額・受付開始日・受付締切日は空欄になります。</strong>出典側のカタログにその項目が無いためで、推定値は入れていません。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="flow">
+    <div class="container">
+      <h2>処理の流れ</h2>
+      <p class="section-note">取得 → 整形 → 出力の3段階。詳しい設計は <a href="docs/design.md">docs/design.md</a> を参照してください。</p>
+      <ul class="flow">
+        <li>
+          <span class="step-num">1</span>
+          <h3>取得</h3>
+          <p>設定ファイルの情報源を順に読み、公募情報を1件ずつ収集します。ネットワークなしのモック経路もあります。</p>
+        </li>
+        <li class="flow-arrow" aria-hidden="true">→</li>
+        <li>
+          <span class="step-num">2</span>
+          <h3>整形</h3>
+          <p>収集結果を共通の形（GrantRecord）に揃え、列の順序・表記をそろえます。</p>
+        </li>
+        <li class="flow-arrow" aria-hidden="true">→</li>
+        <li>
+          <span class="step-num">3</span>
+          <h3>出力</h3>
+          <p>CSVとXLSXの2形式で書き出します。文字化け・数式インジェクション対策済みです。</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="sample">
+    <div class="container">
+      <h2>実際に出力された表（抜粋）</h2>
+      <p class="section-note">
+        下の3行は <a href="reports/example-run/grants.csv">reports/example-run/grants.csv</a> からの転記です。
+        <strong>実行して出てきた実データで、架空の値ではありません。</strong>
+        全107件は同ファイル（Excel でそのまま開けます）と
+        <a href="reports/example-run/grants.xlsx">grants.xlsx</a> で確認できます。
+      </p>
+      <div class="table-scroll">
+        <table>
+          <caption>GrantRecord の列（<code>src/csv.js</code> の CSV_COLUMNS と一致）</caption>
+          <thead>
+            <tr>
+              <th scope="col">title（公募名）</th>
+              <th scope="col">organization（実施主体）</th>
+              <th scope="col">category（分類）</th>
+              <th scope="col">region（対象地域）</th>
+              <th scope="col">amount（金額）</th>
+              <th scope="col">application_start（受付開始）</th>
+              <th scope="col">application_deadline（受付締切）</th>
+              <th scope="col">data_formats（データ形式）</th>
+              <th scope="col">updated_at（更新日）</th>
+              <th scope="col">status（状態）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>補助金等の手続の簡素化</td>
+              <td>農林水産省</td>
+              <td>補助金</td>
+              <td>全国</td>
+              <td class="placeholder-cell">（空欄）</td>
+              <td class="placeholder-cell">（空欄）</td>
+              <td class="placeholder-cell">（空欄）</td>
+              <td>—</td>
+              <td>2025-04-11</td>
+              <td>ok</td>
+            </tr>
+            <tr>
+              <td>令和３年木質バイオマスエネルギー利用動向調査</td>
+              <td>農林水産省</td>
+              <td>補助金</td>
+              <td>全国</td>
+              <td class="placeholder-cell">（空欄）</td>
+              <td class="placeholder-cell">（空欄）</td>
+              <td class="placeholder-cell">（空欄）</td>
+              <td>PDF / XLS</td>
+              <td>2024-07-02</td>
+              <td>ok</td>
+            </tr>
+            <tr>
+              <td>令和３年度_人事院調達情報</td>
+              <td>人事院</td>
+              <td>公募・入札公告</td>
+              <td>全国</td>
+              <td class="placeholder-cell">（空欄）</td>
+              <td class="placeholder-cell">（空欄）</td>
+              <td class="placeholder-cell">（空欄）</td>
+              <td>HTML / PDF</td>
+              <td>2025-06-27</td>
+              <td>ok</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="notice">
+        金額・受付開始日・受付締切日の3列は、出典側のカタログにその項目が無いため<strong>空欄のまま出力しています。</strong>
+        それらしい値を推定して埋めることはしていません。
+      </p>
+    </div>
+  </section>
+
+  <section id="run">
+    <div class="container">
+      <h2>実行結果</h2>
+      <p class="section-note">
+        すべて<strong>実測値</strong>です。依存も生成物も無い Docker コンテナ（<code>node:22-bookworm-slim</code>）で
+        <code>npm ci</code> から実行して測りました。
+      </p>
+      <div class="stat-grid">
+        <div class="stat-card">
+          <p class="stat-label">実行日</p>
+          <p class="stat-value">2026-08-25</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">所要時間（実測）</p>
+          <p class="stat-value">132.6 秒</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">収集件数</p>
+          <p class="stat-value">107 件</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">情報源数 / 成功率</p>
+          <p class="stat-value">3 / 100%</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">テスト</p>
+          <p class="stat-value">47 件全通過</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">通信なしでの再生成（実測）</p>
+          <p class="stat-value">0.1 秒</p>
+        </div>
+      </div>
+
+      <h2 style="margin-top:40px;">手作業と比べると</h2>
+      <p class="section-note">
+        <strong>「手作業」の側は外挿（推計）です。実測ではありません。</strong>
+        無作為に選んだ10件を実際に手作業して1件あたりの時間を測り、107件ぶんに掛けた値です。
+        1件ごとの秒数・選び方・計算式は <a href="docs/measurement.md">docs/measurement.md</a> にそのまま残しています。
+      </p>
+      <div class="table-scroll">
+        <table>
+          <caption>107件を集めて表にするまで</caption>
+          <thead>
+            <tr>
+              <th scope="col">項目</th>
+              <th scope="col">手作業</th>
+              <th scope="col">本ツール</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1件あたり</td>
+              <td>17.7 秒（10件の<strong>実測</strong>の中央値）</td>
+              <td>1.24 秒（<strong>実測</strong> 132.6秒 ÷ 107件）</td>
+            </tr>
+            <tr>
+              <td>107件ぶん</td>
+              <td>約 31.6 分（<strong>外挿</strong>：17.7秒 × 107件）</td>
+              <td>132.6 秒＝約 2.2 分（<strong>実測</strong>）</td>
+            </tr>
+            <tr>
+              <td>表への整形（CSV / XLSX）</td>
+              <td>上記の手作業に含む</td>
+              <td>同じ実行の中で自動生成（別作業なし）</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="notice">
+        この差は「<strong>外挿</strong> − <strong>実測</strong>」であり、両方を実測して比べたものではありません。
+        手作業の17.7秒はページ構造を知っている開発者本人が測った値で、実務にかかる時間の下限に近い値です。
+        本ツールの132.6秒は、その大半が待ち時間です（<code>robots.txt</code> の <code>Crawl-delay: 10</code> に従い、
+        1リクエストごとに10秒空けています）。速くすることもできますが、そうしていません。
+      </p>
+    </div>
+  </section>
+
+  <section id="check">
+    <div class="container">
+      <h2>確認・再現の手順</h2>
+      <p class="section-note">発注判断のために、以下から実際の状態を確認できます。</p>
+      <ul class="link-list">
+        <li>
+          <strong>利用規約・robots.txt の事前確認記録</strong><br>
+          <a href="docs/compliance.md">docs/compliance.md</a>
+          — 対象データ源ごとに、判定（利用可・条件付き可・不可）の根拠を記録しています。
+        </li>
+        <li>
+          <strong>Dockerでの再現手順</strong><br>
+          <a href="README.md#⑥-dockerでの再現手順">README「⑥ Dockerでの再現手順」</a>
+          — ローカルに Node.js を入れずに、Docker のみで同じ結果を再現できます。
+        </li>
+        <li>
+          <strong>仕組み図</strong><br>
+          <a href="docs/design.md">docs/design.md</a>
+          — 取得・整形・出力の各段階を図で確認できます。
+        </li>
+        <li>
+          <strong>計測の生記録</strong><br>
+          <a href="docs/measurement.md">docs/measurement.md</a>
+          — 手作業10件の1件ごとの秒数、対象の選び方、中央値、外挿の計算式をそのまま残しています。
+          実測と外挿を区別して記載しています。
+        </li>
+        <li>
+          <strong>実行して出てきたファイルそのもの</strong><br>
+          <a href="reports/example-run/">reports/example-run/</a>
+          — CSV（107件）とXLSX。出典・加工主体の記載も含まれています。
+        </li>
+        <li>
+          <strong>できないこと・制約</strong><br>
+          <a href="README.md#⑧-できないこと制約">README「⑧ できないこと・制約」</a>
+          — 対象範囲や既知の限界を正直に記載しています。
+        </li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>
+      <strong>出典：</strong>e-Govデータポータル（デジタル庁）（<a href="https://data.e-gov.go.jp/data/dataset">https://data.e-gov.go.jp/data/dataset</a>）<br>
+      <strong>利用条件：</strong>公共データ利用規約（第1.0版）PDL1.0（<a href="https://www.digital.go.jp/resources/open_data/public_data_license_v1.0">規約原文</a>）<br>
+      <strong>加工の有無：</strong>あり。「データセット検索結果」（デジタル庁 e-Govデータポータル）をもとに grant-info-collector が作成。<br>
+      <strong>加工主体：</strong>grant-info-collector（本ツールの実行者）。デジタル庁が作成した未加工の情報ではありません。
+    </p>
+    <p>Grant Info Collector — 実績構築プロジェクト・第2弾成果物。詳細は <a href="README.md">README.md</a> を参照。</p>
+  </div>
+</footer>
+
+</body>
+</html>

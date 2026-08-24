@@ -15,6 +15,9 @@ RUN npm ci --omit=dev \
     && chown -R collector:collector /opt/grant-info-collector /workspace
 
 COPY --chown=collector:collector src ./src
+# 取得先が停止・仕様変更しても動かせるよう、固定データと既定の設定を同梱する。
+COPY --chown=collector:collector fixtures ./fixtures
+COPY --chown=collector:collector config ./config
 
 USER collector:collector
 WORKDIR /workspace

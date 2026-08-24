@@ -51,3 +51,21 @@ test('有効な設定を正規化できる', () => {
   assert.equal(config.sources[0].authRequired, false);
   assert.deepEqual(config.settings.outputFormats, ['csv', 'xlsx']);
 });
+
+test('収集の上限値は1以上の整数だけを受け付ける', () => {
+  assert.throws(
+    () => validateConfig({ sources: [{ name: 'A', type: 'egov-catalog', url: 'https://example.com/', maxOrganizations: 0 }] }),
+    /maxOrganizations/,
+  );
+  assert.throws(
+    () => validateConfig({ sources: [{ name: 'A', type: 'egov-catalog', url: 'https://example.com/', maxPages: 1.5 }] }),
+    /maxPages/,
+  );
+});
+
+test('検索条件と上限の既定値を補う', () => {
+  const config = validateConfig({ sources: [{ name: 'A', type: 'egov-catalog', url: 'https://example.com/' }] });
+  assert.equal(config.sources[0].query, '');
+  assert.equal(config.sources[0].maxOrganizations, 3);
+  assert.equal(config.sources[0].maxPages, 1);
+});

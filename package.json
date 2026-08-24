@@ -2,11 +2,12 @@
   "name": "grant-info-collector",
   "version": "0.1.0",
   "private": true,
-  "description": "補助金・助成金の公募情報を収集し、CSV/XLSXへ整形する自動化ツール（雛形）",
+  "description": "e-Govデータポータルの公開データから補助金・助成金・公募関連の情報を収集し、CSV/XLSXへ整形する自動化ツール",
   "scripts": {
-    "collect": "node src/cli.js --config config/sources.json --output reports/latest",
+    "collect": "node src/cli.js --config config/sources.json --output reports/runs --timestamp",
     "test": "node --test --test-concurrency=1",
-    "validate": "for f in src/*.js tests/*.js; do node --check \"$f\" || exit 1; done"
+    "validate": "for f in src/*.js tests/*.js; do node --check \"$f\" || exit 1; done",
+    "collect:offline": "node src/cli.js --config config/sources.json --output reports/runs --timestamp --offline"
   },
   "engines": {
     "node": ">=22"

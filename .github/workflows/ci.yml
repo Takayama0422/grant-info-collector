@@ -26,3 +26,18 @@ jobs:
 
       - name: テストを実行
         run: npm test
+
+      # 通信せずに動くこと（同梱の固定データから同じ結果が出ること）をCIでも確認する。
+      # 外部サイトへの取得はCIから行わない（相手への負担を増やさないため）。
+      - name: 通信なしでの収集を実行
+        run: node src/cli.js --config config/sources.json --output reports/ci --offline
+
+      - name: 出力の件数と出典表記を確認
+        run: |
+          test -f reports/ci/grants.csv
+          test -f reports/ci/grants.xlsx
+          rows=$(grep -vc '^#' reports/ci/grants.csv)
+          echo "データ行数（ヘッダ含む）: $rows"
+          test "$rows" -eq 108
+          grep -q '^# 出典：' reports/ci/grants.csv
+          grep -q '^# 加工主体：' reports/ci/grants.csv

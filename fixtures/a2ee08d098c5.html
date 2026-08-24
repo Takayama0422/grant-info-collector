@@ -1,0 +1,2119 @@
+<!DOCTYPE html>
+<!--[if IE 9]> <html lang="ja" class="ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="ja"> <!--<![endif]-->
+  <head>
+    
+  <meta charset="utf-8" />
+      <meta name="generator" content="ckan 2.9.5" />
+      <meta name="viewport" content="width=device-width">
+  
+  <meta name="description" content="データカタログに登録済みのデータセットの名称等一覧表示します。" />
+  <meta name="keywords" content="公共データ,オープンデータ,データカタログ,データセット" />
+
+
+    <title>
+データセット | e-Govデータポータル</title>
+
+    
+    
+    <link rel="shortcut icon" href="/data/base/images/favicon.ico" />
+    
+    
+        <link rel="alternate" type="text/n3" href="https://data.e-gov.go.jp/data/catalog.n3"/>
+        <link rel="alternate" type="text/ttl" href="https://data.e-gov.go.jp/data/catalog.ttl"/>
+        <link rel="alternate" type="application/rdf+xml" href="https://data.e-gov.go.jp/data/catalog.xml"/>
+        <link rel="alternate" type="application/ld+json" href="https://data.e-gov.go.jp/data/catalog.jsonld"/>
+    
+
+  
+  
+  
+  
+
+
+    
+      
+      
+    
+
+    
+    <link href="/data/webassets/ckanext-datasetslist-theme/637f4624_jquery-ui-min-css.css" rel="stylesheet"/>
+<link href="/data/webassets/ckanext-datasetslist-theme/a8504815_datasetslist_theme_css.css" rel="stylesheet"/>
+<link href="/data/webassets/ckanext-datasetslist-theme/088fc192_datasetslist_theme_form_tooltip_css.css" rel="stylesheet"/>
+<link href="/data/webassets/vendor/bc192712_select2.css" rel="stylesheet"/>
+<link href="/data/webassets/vendor/0b01aef1_font-awesome.css" rel="stylesheet"/>
+<link href="/data/webassets/ckanext-datasetslist-theme/79ca7695_suggest_css.css" rel="stylesheet"/>
+    
+  </head>
+
+  
+  <body data-site-root="https://data.e-gov.go.jp/data/" data-locale-root="https://data.e-gov.go.jp/data/" >
+
+    
+
+    
+        
+
+<div id="blockskip">
+  <a href="#contents">このページの本文へ移動</a>
+</div>
+<header>
+  <div class="header_title_container">
+    <div class="header_title_inner header-image">
+      <button class="header_menu_btn" id="header_menu_btn_01" aria-label="メニュー" data-dialog="header_nav_area">
+        <span class="menu_bar"></span>
+        <span class="menu_bar"></span>
+        <span class="menu_bar"></span>
+        <span class="menu_label">メニュー</span>
+      </button>
+  
+    
+      <a href="/data/" class="header_logo"><img src="/data/base/images/logo.svg" alt="e-Govデータポータル"></a>
+      <span class="header_title">データポータル</span>
+    
+  
+      <div class="header_lang_wrapper">
+        <a href="#" class="header_lang_link" role="button" aria-expanded="false" aria-controls="lang_menu_01" style="text-decoration: none;">
+          <img class="icon_header_lang" src="/data/base/images/icon_header_lang.svg" alt="言語切り替えのイメージ">
+          <span class="only_pc lang_link" lang="en" style="margin-left: 0.15rem !important">Language</span>
+        </a>
+        <ul class="lang_menu" id="lang_menu_01" aria-label="アカウントメニュー">
+          <li><a href="/data/ja/dataset?q=%E5%85%AC%E5%8B%9F">日本語</a></li>
+          <li><a href="/data/en/dataset?q=%E5%85%AC%E5%8B%9F" lang="en">English</a></li>
+        </ul>
+      </div>
+  
+    
+      <a href="https://data.e-gov.go.jp/info/keycloak/login" 
+           class="header_link only_pc ml-0 pc-ml-6">
+          ログイン
+      </a>
+    
+      <button class="btn_normal only_pc ml-0 pc-ml-6" onclick="location.href='https://account.e-gov.go.jp/user/pre-registration/init?service_type=00'">新規登録</button>
+    
+  
+    </div>
+  </div>
+  <div class="header_nav_container" id="header_nav_area" aria-labelledby="header_menu_btn_01">
+    <nav class="header_nav">
+      <div class="nav_header">
+        <img class="header_menu_logo" src="/data/base/images/logo.svg" alt="e-Govデータポータル" tabindex="0">
+        <button class="close_dialog close_dialog_btn">
+          <span class="close_dialog_label">閉じる</span>
+        </button>
+      </div>
+  
+    
+    
+      <div class="nav_user_links">
+        <a href="https://data.e-gov.go.jp/info/keycloak/login" class="header_link header_link_in_menu">ログイン</a>
+      
+        <a href="https://data.e-gov.go.jp/info/#" class="header_link header_link_in_menu">新規登録</a>
+      
+      </div>
+  
+      <ul class="nav_bar">
+                <li class="active"><a href="/data/dataset/?organization=default">データセット</a></li><li><a href="/data/organization/?q=default">提供組織</a></li><li><a href="/data/showcase?organization=default">ショーケース</a></li>
+  
+
+    
+        <li><a href="https://data.e-gov.go.jp/info/communication/list">コミュニケーション</a></li>
+        <li><a href="/info/databasesite">データベースサイト一覧</a></li>
+  
+      </ul>
+      <ul class="nav_bottom_links">
+        <li><a href="/info/about-site">このサイトについて</a></li>
+        <li><a href="/info/service-policy">ご利用にあたって</a></li>
+        <li><a href="/info/help">ヘルプ</a></li>
+        <li><a href="/info/terms">利用規約</a></li>
+        <li><a href="/info/privacy-policy">個人情報取扱方針</a></li>
+        <li><a href="/info/contacts">お問合せ</a></li>
+        <li><a href="https://data.e-gov.go.jp/info/dashboard/metrics">ダッシュボード</a></li>
+        <li><a href="/info/site-map">サイトマップ</a></li>
+      </ul>
+    
+    </nav>
+  </div>
+</header>
+
+    
+
+    
+    
+      <main>
+        
+          <div class="contents_area flash-messages mb-5 pc-mb-5">
+            
+              
+            
+          </div>
+        
+      <div class="contents_area" id="contents">
+    
+      <!-- <div class="container"> -->
+        
+
+          <div class="row wrapper no-nav">
+
+            
+              <!--<aside class="secondary col-sm-3">-->
+                
+              <!--</aside>-->
+              <div class="side_menu_contents has_facet_menu">
+                <div class="dialog facet_navi" id="facetNavi01" aria-modal="true" role="dialog" tabindex="-1" aria-hidden="true" aria-labelledby="facetNavi01Label">
+                  <div class="dialog_contents">
+              
+                    <div class="sp-only">
+                      <div id="search_loading_spfacet">
+                        <div class="nowloading">
+                          <span class="loading"></span>
+                        </div>
+                        <div style="text-align: center;">検索しています。</div>
+                      </div>
+                    </div>
+              
+                    <div class="dialog_header">
+                      <h2 class="page_title_icon mt-0 pc-mt-0 mb-0 pc-mb-0" id="facetNavi01Label">絞り込み条件</h2><button class="close_dialog close_dialog_btn"><span class="close_dialog_label">閉じる</span></button>
+                    </div>
+                    <div class="dialog_main">
+                        
+<!-- search secondary_content start -->
+<div class="filters">
+  <div>
+
+    <!-- facet_list start -->
+<div class="facet_condition_box">
+    <p class="text text_px18 text_bold mt-0 pc-mt-0 mb-5 pc-mb-5">
+        組織
+    </p>
+                            
+    <nav aria-label="組織">
+        <ul class="checkbox_list facet_list mt-0 pc-mt-0 mb-5 pc-mb-5" id="facet_list_0organization" role="group">
+
+    
+        <ul class="list_accordion facet-organization-list">
+                <li>
+                    <button class="accordion_btn" aria-expanded="false" aria-controls="list_accordion_body_1">国の行政機関</button>
+                    <div class="list_accordion_body" id="list_accordion_body_1">
+                        <ul class="list_accordion_list facet_list mt-3 pc-mt-3 mb-5 pc-mb-5 facet-organization-list" id="list_accordion_list_01" role="group">
+                            <li>
+                                <a class="list_accordion_facet_link" data-module="click_loading" href="/data/dataset/?q=%E5%85%AC%E5%8B%9F&amp;organization=org_1600">
+                                    厚生労働省
+                                    <span class="facet_condition_amount">(12)</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="list_accordion_facet_link" data-module="click_loading" href="/data/dataset/?q=%E5%85%AC%E5%8B%9F&amp;organization=org_2100">
+                                    防衛省
+                                    <span class="facet_condition_amount">(9)</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="list_accordion_facet_link" data-module="click_loading" href="/data/dataset/?q=%E5%85%AC%E5%8B%9F&amp;organization=org_0300">
+                                    人事院
+                                    <span class="facet_condition_amount">(7)</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="list_accordion_facet_link" data-module="click_loading" href="/data/dataset/?q=%E5%85%AC%E5%8B%9F&amp;organization=org_0950">
+                                    個人情報保護委員会
+                                    <span class="facet_condition_amount">(5)</span>
+                                </a>
+                            </li>
+                            <li class="hide_sp">
+                                <a class="list_accordion_facet_link" data-module="click_loading" href="/data/dataset/?q=%E5%85%AC%E5%8B%9F&amp;organization=org_0600">
+                                    公正取引委員会
+                                    <span class="facet_condition_amount">(5)</span>
+                                </a>
+                            </li>
+                            <li class="hide_sp">
+                                <a class="list_accordion_facet_link" data-module="click_loading" href="/data/dataset/?q=%E5%85%AC%E5%8B%9F&amp;organization=org_1500">
+                                    文部科学省
+                                    <span class="facet_condition_amount">(5)</span>
+                                </a>
+                            </li>
+                            <li class="hide_sp">
+                                <a class="list_accordion_facet_link" data-module="click_loading" href="/data/dataset/?q=%E5%85%AC%E5%8B%9F&amp;organization=org_0200">
+                                    内閣法制局
+                                    <span class="facet_condition_amount">(5)</span>
+                                </a>
+                            </li>
+                            <li class="hide_sp">
+                                <a class="list_accordion_facet_link" data-module="click_loading" href="/data/dataset/?q=%E5%85%AC%E5%8B%9F&amp;organization=org_2000">
+                                    環境省
+                                    <span class="facet_condition_amount">(4)</span>
+                                </a>
+                            </li>
+                            <li class="hide_sp">
+                                <a class="list_accordion_facet_link" data-module="click_loading" href="/data/dataset/?q=%E5%85%AC%E5%8B%9F&amp;organization=org_1700">
+                                    農林水産省
+                                    <span class="facet_condition_amount">(3)</span>
+                                </a>
+                            </li>
+                            <li class="hide_sp">
+                                <a class="list_accordion_facet_link" data-module="click_loading" href="/data/dataset/?q=%E5%85%AC%E5%8B%9F&amp;organization=org_1100">
+                                    総務省
+                                    <span class="facet_condition_amount">(2)</span>
+                                </a>
+                            </li>
+                            <li class="hide_sp_pc">
+                                <a class="list_accordion_facet_link" data-module="click_loading" href="/data/dataset/?q=%E5%85%AC%E5%8B%9F&amp;organization=org_1900">
+                                    国土交通省
+                                    <span class="facet_condition_amount">(2)</span>
+                                </a>
+                            </li>
+                            <li class="hide_sp_pc">
+                                <a class="list_accordion_facet_link" data-module="click_loading" href="/data/dataset/?q=%E5%85%AC%E5%8B%9F&amp;organization=org_1200">
+                                    法務省
+                                    <span class="facet_condition_amount">(2)</span>
+                                </a>
+                            </li>
+                            <li class="hide_sp_pc">
+                                <a class="list_accordion_facet_link" data-module="click_loading" href="/data/dataset/?q=%E5%85%AC%E5%8B%9F&amp;organization=org_0400">
+                                    内閣府
+                                    <span class="facet_condition_amount">(1)</span>
+                                </a>
+                            </li>
+                            <li class="hide_sp_pc">
+                                <a class="list_accordion_facet_link" data-module="click_loading" href="/data/dataset/?q=%E5%85%AC%E5%8B%9F&amp;organization=org_1400">
+                                    財務省
+                                    <span class="facet_condition_amount">(1)</span>
+                                </a>
+                            </li>
+                            <li class="hide_sp_pc">
+                                <a class="list_accordion_facet_link" data-module="click_loading" href="/data/dataset/?q=%E5%85%AC%E5%8B%9F&amp;organization=org_0800">
+                                    金融庁
+                                    <span class="facet_condition_amount">(1)</span>
+                                </a>
+                            </li>
+                            <li class="hide_sp_pc">
+                                <a class="list_accordion_facet_link" data-module="click_loading" href="/data/dataset/?q=%E5%85%AC%E5%8B%9F&amp;organization=org_1000">
+                                    復興庁
+                                    <span class="facet_condition_amount">(1)</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <button class="facet_oc_btn mt-0 pc-mt-0 mb-0 pc-mb-0" aria-expanded="false" aria-controls="list_accordion_list_01" tabindex="0" data-text-closed="国の行政機関をもっと見る" data-text-opened="人気の国の行政機関だけを表示">国の行政機関をもっと見る</button>
+                    </div>
+                </li>
+            </ul>
+        
+        
+        
+        
+
+        </ul>
+    </nav>
+    <p class="module-footer">
+        <button class="btn_normal btn_gray facet_btn mt-0 pc-mt-0 mb-0 pc-mb-0" data-module="click_loading facet_clear" data-module-action="facet_clear" id="clear_organization">絞込を解除</button>
+    </p>
+</div>
+<!-- facet_list end -->
+
+    <!-- facet_list start -->
+<div class="facet_condition_box">
+    <p class="text text_px18 text_bold mt-0 pc-mt-0 mb-5 pc-mb-5">
+        カテゴリー
+    </p>
+                            
+    <nav aria-label="カテゴリー">
+        <ul class="checkbox_list facet_list mt-0 pc-mt-0 mb-5 pc-mb-5" id="facet_list_0groups" role="group">
+
+            <fieldset class="register-fieldset">
+                <legend class="visually_hidden">カテゴリー</legend>
+                <li class="nav-item">
+                    <a href="javascript:void(0)" class="facet_href" title="行財政">
+            <input type="checkbox" class="checkbox_item" name="groups" value="gr_1300" id="gr_1300" />
+                        <label for="gr_1300">行財政
+                            <span class="facet_condition_amount">(44)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript:void(0)" class="facet_href" title="社会保障・衛生">
+            <input type="checkbox" class="checkbox_item" name="groups" value="gr_1500" id="gr_1500" />
+                        <label for="gr_1500">社会保障・衛生
+                            <span class="facet_condition_amount">(11)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript:void(0)" class="facet_href" title="その他">
+            <input type="checkbox" class="checkbox_item" name="groups" value="gr_1700" id="gr_1700" />
+                        <label for="gr_1700">その他
+                            <span class="facet_condition_amount">(5)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript:void(0)" class="facet_href" title="情報通信・科学技術">
+            <input type="checkbox" class="checkbox_item" name="groups" value="gr_1100" id="gr_1100" />
+                        <label for="gr_1100">情報通信・科学技術
+                            <span class="facet_condition_amount">(4)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item hide_sp">
+                    <a href="javascript:void(0)" class="facet_href" title="企業・家計・経済">
+            <input type="checkbox" class="checkbox_item" name="groups" value="gr_0700" id="gr_0700" />
+                        <label for="gr_0700">企業・家計・経済
+                            <span class="facet_condition_amount">(1)</span>
+                        </label>
+                    </a>
+                </li>
+            </fieldset>
+        </ul>
+    </nav>
+    <p class="module-footer">
+        <button class="btn_normal btn_dark_gray facet_btn mt-5 pc-mt-0 mb-5 pc-mb-5" data-module="click_loading facet" data-module-action="facet">絞込</button>
+        <button class="btn_normal btn_gray facet_btn mt-0 pc-mt-0 mb-0 pc-mb-0" data-module="click_loading facet_clear" data-module-action="facet_clear" id="clear_groups">絞込を解除</button>
+    </p>
+</div>
+<!-- facet_list end -->
+
+    <!-- facet_list start -->
+<div class="facet_condition_box">
+    <p class="text text_px18 text_bold mt-0 pc-mt-0 mb-5 pc-mb-5">
+        タグ
+    </p>
+                            
+    <nav aria-label="タグ">
+        <ul class="checkbox_list facet_list mt-0 pc-mt-0 mb-5 pc-mb-5" id="facet_list_0tags" role="group">
+
+            <fieldset class="register-fieldset">
+                <legend class="visually_hidden">タグ</legend>
+                <li class="nav-item">
+                    <a href="javascript:void(0)" class="facet_href" title="予算_決算_調達関連情報">
+            <input type="checkbox" class="checkbox_item" name="tags" value="予算_決算_調達関連情報" id="予算_決算_調達関連情報" />
+                        <label for="予算_決算_調達関連情報">予算_決算_調達関連情報
+                            <span class="facet_condition_amount">(40)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript:void(0)" class="facet_href" title="調達">
+            <input type="checkbox" class="checkbox_item" name="tags" value="調達" id="調達" />
+                        <label for="調達">調達
+                            <span class="facet_condition_amount">(25)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript:void(0)" class="facet_href" title="契約">
+            <input type="checkbox" class="checkbox_item" name="tags" value="契約" id="契約" />
+                        <label for="契約">契約
+                            <span class="facet_condition_amount">(21)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript:void(0)" class="facet_href" title="調達情報">
+            <input type="checkbox" class="checkbox_item" name="tags" value="調達情報" id="調達情報" />
+                        <label for="調達情報">調達情報
+                            <span class="facet_condition_amount">(18)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item hide_sp">
+                    <a href="javascript:void(0)" class="facet_href" title="財政と契約">
+            <input type="checkbox" class="checkbox_item" name="tags" value="財政と契約" id="財政と契約" />
+                        <label for="財政と契約">財政と契約
+                            <span class="facet_condition_amount">(15)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item hide_sp">
+                    <a href="javascript:void(0)" class="facet_href" title="社会的流動性と福祉">
+            <input type="checkbox" class="checkbox_item" name="tags" value="社会的流動性と福祉" id="社会的流動性と福祉" />
+                        <label for="社会的流動性と福祉">社会的流動性と福祉
+                            <span class="facet_condition_amount">(11)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item hide_sp">
+                    <a href="javascript:void(0)" class="facet_href" title="医療_福祉">
+            <input type="checkbox" class="checkbox_item" name="tags" value="医療_福祉" id="医療_福祉" />
+                        <label for="医療_福祉">医療_福祉
+                            <span class="facet_condition_amount">(9)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item hide_sp">
+                    <a href="javascript:void(0)" class="facet_href" title="予算">
+            <input type="checkbox" class="checkbox_item" name="tags" value="予算" id="予算" />
+                        <label for="予算">予算
+                            <span class="facet_condition_amount">(8)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item hide_sp">
+                    <a href="javascript:void(0)" class="facet_href" title="公務_他に分類されるものを除く">
+            <input type="checkbox" class="checkbox_item" name="tags" value="公務_他に分類されるものを除く" id="公務_他に分類されるものを除く" />
+                        <label for="公務_他に分類されるものを除く">公務_他に分類されるものを除く
+                            <span class="facet_condition_amount">(7)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item hide_sp">
+                    <a href="javascript:void(0)" class="facet_href" title="学術研究_専門_技術サービス業">
+            <input type="checkbox" class="checkbox_item" name="tags" value="学術研究_専門_技術サービス業" id="学術研究_専門_技術サービス業" />
+                        <label for="学術研究_専門_技術サービス業">学術研究_専門_技術サービス業
+                            <span class="facet_condition_amount">(3)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item hide_sp_pc">
+                    <a href="javascript:void(0)" class="facet_href" title="科学と研究">
+            <input type="checkbox" class="checkbox_item" name="tags" value="科学と研究" id="科学と研究" />
+                        <label for="科学と研究">科学と研究
+                            <span class="facet_condition_amount">(3)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item hide_sp_pc">
+                    <a href="javascript:void(0)" class="facet_href" title="経済">
+            <input type="checkbox" class="checkbox_item" name="tags" value="経済" id="経済" />
+                        <label for="経済">経済
+                            <span class="facet_condition_amount">(3)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item hide_sp_pc">
+                    <a href="javascript:void(0)" class="facet_href" title="評価結果等">
+            <input type="checkbox" class="checkbox_item" name="tags" value="評価結果等" id="評価結果等" />
+                        <label for="評価結果等">評価結果等
+                            <span class="facet_condition_amount">(3)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item hide_sp_pc">
+                    <a href="javascript:void(0)" class="facet_href" title="法律">
+            <input type="checkbox" class="checkbox_item" name="tags" value="法律" id="法律" />
+                        <label for="法律">法律
+                            <span class="facet_condition_amount">(2)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item hide_sp_pc">
+                    <a href="javascript:void(0)" class="facet_href" title="白書_年次報告">
+            <input type="checkbox" class="checkbox_item" name="tags" value="白書_年次報告" id="白書_年次報告" />
+                        <label for="白書_年次報告">白書_年次報告
+                            <span class="facet_condition_amount">(2)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item hide_sp_pc">
+                    <a href="javascript:void(0)" class="facet_href" title="組織_制度の概要">
+            <input type="checkbox" class="checkbox_item" name="tags" value="組織_制度の概要" id="組織_制度の概要" />
+                        <label for="組織_制度の概要">組織_制度の概要
+                            <span class="facet_condition_amount">(2)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item hide_sp_pc">
+                    <a href="javascript:void(0)" class="facet_href" title="障害者自立支援機器">
+            <input type="checkbox" class="checkbox_item" name="tags" value="障害者自立支援機器" id="障害者自立支援機器" />
+                        <label for="障害者自立支援機器">障害者自立支援機器
+                            <span class="facet_condition_amount">(2)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item hide_sp_pc">
+                    <a href="javascript:void(0)" class="facet_href" title="予算及び決算の概要">
+            <input type="checkbox" class="checkbox_item" name="tags" value="予算及び決算の概要" id="予算及び決算の概要" />
+                        <label for="予算及び決算の概要">予算及び決算の概要
+                            <span class="facet_condition_amount">(1)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item hide_sp_pc">
+                    <a href="javascript:void(0)" class="facet_href" title="公募">
+            <input type="checkbox" class="checkbox_item" name="tags" value="公募" id="公募" />
+                        <label for="公募">公募
+                            <span class="facet_condition_amount">(1)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item hide_sp_pc">
+                    <a href="javascript:void(0)" class="facet_href" title="厚生労働科学研究費補助金">
+            <input type="checkbox" class="checkbox_item" name="tags" value="厚生労働科学研究費補助金" id="厚生労働科学研究費補助金" />
+                        <label for="厚生労働科学研究費補助金">厚生労働科学研究費補助金
+                            <span class="facet_condition_amount">(1)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item hide_sp_pc">
+                    <a href="javascript:void(0)" class="facet_href" title="申請_届出等の手続">
+            <input type="checkbox" class="checkbox_item" name="tags" value="申請_届出等の手続" id="申請_届出等の手続" />
+                        <label for="申請_届出等の手続">申請_届出等の手続
+                            <span class="facet_condition_amount">(1)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item hide_sp_pc">
+                    <a href="javascript:void(0)" class="facet_href" title="発達障害">
+            <input type="checkbox" class="checkbox_item" name="tags" value="発達障害" id="発達障害" />
+                        <label for="発達障害">発達障害
+                            <span class="facet_condition_amount">(1)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item hide_sp_pc">
+                    <a href="javascript:void(0)" class="facet_href" title="財政">
+            <input type="checkbox" class="checkbox_item" name="tags" value="財政" id="財政" />
+                        <label for="財政">財政
+                            <span class="facet_condition_amount">(1)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item hide_sp_pc">
+                    <a href="javascript:void(0)" class="facet_href" title="農業_林業">
+            <input type="checkbox" class="checkbox_item" name="tags" value="農業_林業" id="農業_林業" />
+                        <label for="農業_林業">農業_林業
+                            <span class="facet_condition_amount">(1)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item hide_sp_pc">
+                    <a href="javascript:void(0)" class="facet_href" title="通信 放送">
+            <input type="checkbox" class="checkbox_item" name="tags" value="通信 放送" id="通信 放送" />
+                        <label for="通信 放送">通信 放送
+                            <span class="facet_condition_amount">(1)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item hide_sp_pc">
+                    <a href="javascript:void(0)" class="facet_href" title="障害福祉サービス等">
+            <input type="checkbox" class="checkbox_item" name="tags" value="障害福祉サービス等" id="障害福祉サービス等" />
+                        <label for="障害福祉サービス等">障害福祉サービス等
+                            <span class="facet_condition_amount">(1)</span>
+                        </label>
+                    </a>
+                </li>
+            </fieldset>
+        </ul>
+    </nav>
+    <p class="module-footer">
+        <button class="facet_oc_btn mt-0 pc-mt-0 mb-5 pc-mb-5" aria-expanded="false" aria-controls="facet_list_0tags" tabindex="0" data-text-closed="タグをもっと見る" data-text-opened="人気のタグだけを表示">タグをもっと見る</button>
+        <button class="btn_normal btn_dark_gray facet_btn mt-5 pc-mt-0 mb-5 pc-mb-5" data-module="click_loading facet" data-module-action="facet">絞込</button>
+        <button class="btn_normal btn_gray facet_btn mt-0 pc-mt-0 mb-0 pc-mb-0" data-module="click_loading facet_clear" data-module-action="facet_clear" id="clear_tags">絞込を解除</button>
+    </p>
+</div>
+<!-- facet_list end -->
+
+    <!-- facet_list start -->
+<div class="facet_condition_box">
+    <p class="text text_px18 text_bold mt-0 pc-mt-0 mb-5 pc-mb-5">
+        フォーマット
+    </p>
+                            
+    <nav aria-label="フォーマット">
+        <ul class="checkbox_list facet_list mt-0 pc-mt-0 mb-5 pc-mb-5" id="facet_list_0res_format" role="group">
+
+            <fieldset class="register-fieldset">
+                <legend class="visually_hidden">フォーマット</legend>
+                <li class="nav-item">
+                    <a href="javascript:void(0)" class="facet_href" title="HTML">
+            <input type="checkbox" class="checkbox_item" name="res_format" value="HTML" id="HTML" />
+                        <label for="HTML">HTML
+                            <span class="facet_condition_amount">(53)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript:void(0)" class="facet_href" title="PDF">
+            <input type="checkbox" class="checkbox_item" name="res_format" value="PDF" id="PDF" />
+                        <label for="PDF">PDF
+                            <span class="facet_condition_amount">(22)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript:void(0)" class="facet_href" title="XLS">
+            <input type="checkbox" class="checkbox_item" name="res_format" value="XLS" id="XLS" />
+                        <label for="XLS">XLS
+                            <span class="facet_condition_amount">(5)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript:void(0)" class="facet_href" title="XLSX">
+            <input type="checkbox" class="checkbox_item" name="res_format" value="XLSX" id="XLSX" />
+                        <label for="XLSX">XLSX
+                            <span class="facet_condition_amount">(3)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item hide_sp">
+                    <a href="javascript:void(0)" class="facet_href" title="DOC">
+            <input type="checkbox" class="checkbox_item" name="res_format" value="DOC" id="DOC" />
+                        <label for="DOC">DOC
+                            <span class="facet_condition_amount">(1)</span>
+                        </label>
+                    </a>
+                </li>
+            </fieldset>
+        </ul>
+    </nav>
+    <p class="module-footer">
+        <button class="btn_normal btn_dark_gray facet_btn mt-5 pc-mt-0 mb-5 pc-mb-5" data-module="click_loading facet" data-module-action="facet">絞込</button>
+        <button class="btn_normal btn_gray facet_btn mt-0 pc-mt-0 mb-0 pc-mb-0" data-module="click_loading facet_clear" data-module-action="facet_clear" id="clear_res_format">絞込を解除</button>
+    </p>
+</div>
+<!-- facet_list end -->
+
+    <!-- facet_list start -->
+<div class="facet_condition_box">
+    <p class="text text_px18 text_bold mt-0 pc-mt-0 mb-5 pc-mb-5">
+        ライセンス
+    </p>
+                            
+    <nav aria-label="ライセンス">
+        <ul class="checkbox_list facet_list mt-0 pc-mt-0 mb-5 pc-mb-5" id="facet_list_0res_license_id" role="group">
+
+            <fieldset class="register-fieldset">
+                <legend class="visually_hidden">ライセンス</legend>
+                <li class="nav-item">
+                    <a href="javascript:void(0)" class="facet_href" title="CC BY">
+            <input type="checkbox" class="checkbox_item" name="res_license_id" value="cc-by" id="cc-by" />
+                        <label for="cc-by">CC BY
+                            <span class="facet_condition_amount">(49)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript:void(0)" class="facet_href" title="CC-BY">
+            <input type="checkbox" class="checkbox_item" name="res_license_id" value="CC-BY" id="CC-BY" />
+                        <label for="CC-BY">CC-BY
+                            <span class="facet_condition_amount">(14)</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript:void(0)" class="facet_href" title="政府標準利用規約（第 2.0 版）">
+            <input type="checkbox" class="checkbox_item" name="res_license_id" value="gjstu" id="gjstu" />
+                        <label for="gjstu">政府標準利用規約（第 2.0 版）
+                            <span class="facet_condition_amount">(3)</span>
+                        </label>
+                    </a>
+                </li>
+            </fieldset>
+        </ul>
+    </nav>
+    <p class="module-footer">
+        <button class="btn_normal btn_dark_gray facet_btn mt-5 pc-mt-0 mb-5 pc-mb-5" data-module="click_loading facet" data-module-action="facet">絞込</button>
+        <button class="btn_normal btn_gray facet_btn mt-0 pc-mt-0 mb-0 pc-mb-0" data-module="click_loading facet_clear" data-module-action="facet_clear" id="clear_res_license_id">絞込を解除</button>
+    </p>
+</div>
+<!-- facet_list end -->
+
+    <!-- facet_list start -->
+<div class="facet_condition_box">
+    <p class="text text_px18 text_bold mt-0 pc-mt-0 mb-5 pc-mb-5">
+        種別
+    </p>
+                            
+    <nav aria-label="種別">
+        <ul class="checkbox_list facet_list mt-0 pc-mt-0 mb-5 pc-mb-5" id="facet_list_0drupal_sendtype" role="group">
+
+            <select id="drupal_sendtype" name="drupal_sendtype" class="form_select percentage_100 pc_percentage_100 mt-0 pc-mt-0 mb-5 pc-mb-5" title="種別" aria-label="種別">
+                <option value="">-</option>
+                <option value="01" >問題報告</option>
+                <option value="02" >活用事例</option>
+            </select>
+
+        </ul>
+    </nav>
+    <p class="module-footer">
+        <button class="btn_normal btn_dark_gray facet_btn mt-5 pc-mt-0 mb-5 pc-mb-5" data-module="click_loading facet" data-module-action="facet">絞込</button>
+        <button class="btn_normal btn_gray facet_btn mt-0 pc-mt-0 mb-0 pc-mb-0" data-module="click_loading facet_clear" data-module-action="facet_clear" id="clear_drupal_sendtype">絞込を解除</button>
+    </p>
+</div>
+<!-- facet_list end -->
+
+    <!-- facet_list start -->
+<div class="facet_condition_box">
+    <p class="text text_px18 text_bold mt-0 pc-mt-0 mb-5 pc-mb-5">
+        対応状況
+    </p>
+                            
+    <nav aria-label="対応状況">
+        <ul class="checkbox_list facet_list mt-0 pc-mt-0 mb-5 pc-mb-5" id="facet_list_0drupal_status" role="group">
+
+            <select id="drupal_status" name="drupal_status" class="form_select percentage_100 pc_percentage_100 mt-0 pc-mt-0 mb-5 pc-mb-5" title="対応状況" aria-label="対応状況">
+                <option value="">-</option>
+                <option value="01" >未対応</option>
+                <option value="02" >対応中</option>
+                <option value="03" >対応済</option>
+            </select>
+
+        </ul>
+    </nav>
+    <p class="module-footer">
+        <button class="btn_normal btn_dark_gray facet_btn mt-5 pc-mt-0 mb-5 pc-mb-5" data-module="click_loading facet" data-module-action="facet">絞込</button>
+        <button class="btn_normal btn_gray facet_btn mt-0 pc-mt-0 mb-0 pc-mb-0" data-module="click_loading facet_clear" data-module-action="facet_clear" id="clear_drupal_status">絞込を解除</button>
+    </p>
+</div>
+<!-- facet_list end -->
+    <div class="facet_condition_box">
+      <p class="text text_px18 text_bold mt-0 pc-mt-0 mb-5 pc-mb-5">
+        メタデータ最終更新日
+      </p>
+      <nav>
+        <ul class="list-unstyled nav nav-simple nav-facet facet_list mt-0 pc-mt-0 mb-5 pc-mb-5">
+          <li class="nav-item" style="list-style: none;">
+            <label for="metadata_modified_start">開始</label>
+            <div class="datepicker_container">
+              <input type="text" class="form_input datepicker_input mb-5 pc-mb-5" placeholder="年-月-日" title="年月日" id="metadata_modified_start" name="start-date" >
+            </div>
+          </li>
+          <li class="nav-item" style="list-style: none;">
+            <label for="metadata_modified_end">終了</label>
+            <div class="datepicker_container">
+              <input type="text" class="form_input datepicker_input" placeholder="年-月-日" title="年月日" id="metadata_modified_end" name="end-date" >
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <p class="module-footer">
+        <button class="btn_normal btn_dark_gray facet_btn mt-0 pc-mt-0 mb-5 pc-mb-5" data-module="click_loading facet" data-module-action="facet">絞込</button>
+        <button class="btn_normal btn_gray facet_btn mt-0 pc-mt-0 mb-0 pc-mb-0" data-module="click_loading facet_clear" data-module-action="facet_clear" id="clear_metadata_modified">絞込を解除</button>
+      </p>
+    </div>
+  </div>
+</div>
+<!-- search secondary_content end -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+             
+          </div>
+
+          
+              <!--<div class="primary col-sm-9 col-xs-12" role="main">-->
+                
+              <div class="main_contents">
+                
+                
+
+                
+<!-- search primary_content end -->
+<h1 class="page_title mt-0 pc-mt-0 mb-1 pc-mb-1">
+  データセットを検索
+  <a class="page_title_link rss_link" 
+     href="/data/feeds/custom.atom?q=%E5%85%AC%E5%8B%9F" 
+     target="_blank">
+    RSS
+  </a>
+</h1>
+<div class="link_accordion link_accordion_rear mt-5 pc-mt-5 mb-5 pc-mb-5 ml-0 pc-ml-0">
+  <a class="link_accordion_handle"
+     role="button"
+     aria-expanded="false"
+     aria-controls="link_accordion_content02"
+     aria-label="データセットの説明を開くボタン"
+     tabindex="0">
+    <img class="link_accordion_icon_image"
+         src="/data/base/images/icon_question_mark.svg"
+         alt="データセットの説明を開くボタン">
+    データセットとは？
+  </a>
+  <div id="link_accordion_content02"
+       class="link_accordion_content mt-0 pc-mt-0 mb-0 pc-mb-0">
+    <div class="arrow_up"></div>
+    <div class="link_accordion_content_inner">
+      <p class="text mt-0 pc-mt-0 mb-0 pc-mb-0">
+        データセットはメタデータ(データの説明)とリソース (ファイル等) の集合です。
+      </p>
+    </div>
+  </div>
+</div>
+    
+<form id="fmPackage" class="search-form" method="get" data-module="select-switch">
+
+
+
+
+
+
+
+<div class="search_key_container mt-8 pc-mt-8 mb-2 pc-mb-2">
+  <input aria-label="データセット検索..." 
+         id="field-giant-search" 
+         type="text" 
+         class="form-control input-lg search_key_input" 
+         name="q" 
+         value="公募" 
+         autocomplete="off" 
+         placeholder="データセット検索..."
+         title="データセット検索"
+         onkeydown="event.key==='Enter'?document.querySelector('button.search_key_button').click():''"
+  ><input type="text" style="display: none;"/>
+  <input id="suggest_base_text" type="hidden" value="「search_word」で検索">
+  
+  <button class="search_key_button" type="button" aria-label="検索する" data-module="click_loading search_button" data-module-action="search_button"></button>
+  
+</div>
+
+
+
+
+<div class="mt-4 pc-mt-4 mb-2 pc-mb-2">
+  <ul class="checkbox_list mt-0 pc-mt-0 mb-0 pc-mb-0" role="group">
+  	<li>
+  	  <input type="checkbox" class="checkbox_item" id="toggleResourceSearch" data-module="incResDoc_checkbox" disabled>
+  	  <label for="toggleResourceSearch">リソースファイル内の文書を検索対象に含める</label>
+  	</li>
+  </ul>
+</div>
+
+
+  
+<div class="link_accordion link_accordion_rear mt-5 pc-mt-5 mb-5 pc-mb-5 ml-0 pc-ml-0">
+  <a class="link_accordion_handle" role="button" aria-expanded="false" aria-controls="link_accordion_content01" tabindex="0" aria-label="検索ヒントの説明を開く">
+    検索ヒント
+    <img class="link_accordion_icon_image" src="/data/base/images/icon_question_mark.svg" alt="検索ヒントの説明を開くボタン">
+  </a>
+  <div class="link_accordion_content mt-0 pc-mt-0 mb-0 pc-mb-0" id="link_accordion_content01">
+    <div class="arrow_up"></div>
+    <div class="link_accordion_content_inner">
+      <p class="text mt-0 pc-mt-0 mb-0 pc-mb-0">検索クエリの間に「OR」「NOT」を含めることが可能です。
+例：行政 OR 民間</p>
+    </div>
+  </div>
+</div>
+
+<button type="button" class="btn_normal dialog_handle facet_navi_hadle mt-0 pc-mt-2 mb-5 pc-mb-0" data-dialog="facetNavi01">絞り込み条件をひらく</button>
+
+  
+
+
+  
+<p class="text text_px20 text_bold pc-mt-0 mt-0 pc-mb-2 mb-2">
+
+  
+    
+    
+  
+  
+    
+    
+  
+  
+  
+
+&#34;公募&#34;に対して65件のデータセットが見つかりました</p>
+  
+
+
+  
+<div class="filter_list_coontainer mt-0 pc-mt-0 mb-8 pc-mb-8">
+    
+</div>
+  
+  
+
+
+
+</form>
+<div style="position:relative;flex-grow:1">
+  
+  <div id="search_loading_packagelist">
+    <div style="position:sticky;top:calc(50vh - 45px);">
+      <div class="nowloading">
+        <span class="loading"></span>
+      </div>
+      <div style="text-align: center;">検索しています。</div>
+    </div>
+  </div>
+  
+<div class="upper_pager_container mt-0 pc-mt-0 mb-5 pc-mb-5">
+  <span class="text"><div class="col pull-left">
+  65件
+</div></span>
+  <div class="pager_container" style="flex:auto">
+    <label class="text" for="search_limit">表示件数</label>
+    <select id="search_limit" class="form_select pc-mt-0 mb-0 pc-mb-0" title="表示件数" aria-label="表示件数" name="search_limit" data-module="change_loading merge_to_sort" data-module-action="merge_to_sort">
+      <option value="10">10</option>
+      <option value="20"  selected="selected">20</option>
+      <option value="50">50</option>
+    </select>
+  </div>
+  <div class="pager_container mt-0 pc-mt-0 mb-5 pc-mb-0">
+  
+  
+  
+  
+  
+  <!-- <div class="col center-block"> -->
+    
+      
+        <button class="pager_fast_rewind" aria-label="1ページ目に戻る"></button>
+        <button class="pager_previous" aria-label="前のページに戻る"></button>
+      
+      <select class="form_select pc-mt-0 mb-0 pc-mb-0" name="page" title="指定ページに移動する" aria-label="指定ページに移動する" data-module="change_loading">
+        
+          
+            <option value=1 SELECTED>1</option>
+          
+        
+          
+            <option value=2>2</option>
+          
+        
+          
+            <option value=3>3</option>
+          
+        
+          
+            <option value=4>4</option>
+          
+        
+      </select>
+      
+        <span class="text_px12">
+          
+          
+          <span style="word-break: initial">/4</span>
+        </span>
+      
+      
+        <button class="pager_next" aria-label="次のページに進む" data-module="click_loading" data-target_page="2"></button>
+        <button class="pager_fast_forward" aria-label="最終ページに進む" data-module="click_loading" data-target_page="4"></button>
+      
+    
+  <!-- </div> --></div>
+</div>
+<div class="sort_btn_container mt-0 pc-mt-0 mb-5 pc-mb-5">
+  <select id="search_type" name="search_type" title="データセット並び替え" aria-label="データセット並び替え" class="form_select percentage_60 pc_percentage_30 mt-0 pc-mt-0 mb-0 pc-mb-0" data-module="change_loading merge_to_sort" data-module-action="merge_to_sort">
+    <option value="score, metadata_modified"  selected="selected">関連性</option>
+    <option value="metadata_created" >提供開始日</option>
+    <option value="title_string" >名前</option>
+    <option value="metadata_modified" >メタデータ更新日</option>
+    <option value="views_recent" >人気</option>
+    <option value="rating_ave" >評価</option>
+  </select>
+  <div class="sorting">
+    <label for="asc" class="sort_btn_asc ">
+      <input type="radio" id="asc" name="sorting" value="asc" class="sort_radio" data-module="change_loading merge_to_sort" data-module-action="merge_to_sort"  >
+      <span class="sort_btn_text">昇順</span>
+    </label>
+    <label for="desc" class="sort_btn_dsc sort_type_active">
+      <input type="radio" id="desc" name="sorting" value="desc" class="sort_radio" data-module="change_loading merge_to_sort" data-module-action="merge_to_sort"  checked  >
+      <span class="sort_btn_text">降順</span>
+    </label>
+  </div>
+</div>
+
+
+<!-- package_list start -->
+<form id="fmPackageList" action="/data/metadata_download" method="post">
+  <div class="package-download mb-5 pc-mb-5">
+    <button type="button"
+            class="btn_normal btn_padding_rl31 mt-0 pc-mt-0"
+            data-module="metadata_download"
+            data-module-action="metadata_download">
+      メタ情報取得
+    </button>
+    <div class="input_error mt-0 pc-mt-0 mb-0 pc-mb-0" 
+         style="display:none;"
+         data-message-type="metadata_download">
+      <span class="message_icon error error_icon_position"
+            role="img"
+            aria-hidden="true"></span>
+      <p class="error_message_title">
+        データセットを1つ以上選択してください
+      </p>
+    </div>
+  </div>
+  <fieldset class="register-fieldset">
+    <legend class="visually_hidden">データセット</legend>
+    <ul class="list_dataset mt-0 pc-mt-0 mb-5 pc-mb-5">
+
+
+
+
+
+
+<!-- package_item start -->
+<li class="list_dataset_item">
+  <div class="list_dataset_item_input_box">
+    <input id="checkbox_ab5ad937-6eea-4623-ac1f-c2b6c5d63e16" type="checkbox" class="checkbox_item" name="package_id" value="ab5ad937-6eea-4623-ac1f-c2b6c5d63e16"/>
+    <label for="checkbox_ab5ad937-6eea-4623-ac1f-c2b6c5d63e16">ab5ad937-6eea-4623-ac1f-c2b6c5d63e16</label>
+  </div>
+  <div class="list_dataset_item_main_box">
+    <div class="list_dataset_item_column_content">
+      <p class="mt-0 pc-mt-0 mb-3 pc-mb-3" style="overflow-wrap: anywhere;">
+        <a class="link_normal list_dataset_item_title" href="/data/dataset/fsa_20140901_0090">公募公告</a>
+        
+
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        <mark>公募</mark>公告に関する情報
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        提供開始日:
+        2014-09-19
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        メタデータ更新日:
+        2023-06-08
+      </p>
+      <div class="star_rate_container mt-0 pc-mt-0 mb-4 pc-mb-4">
+        <span class="rate_label mr-2">評価</span><span class='star_rate star_rate_0' aria-hidden="true"></span>
+        <span class="rate_amount ml-1">(0)</span>
+      </div>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+        <span class="badge"> 
+          <a href="/data/dataset/fsa_20140901_0090" class="link_normal" data-format="html">HTML</a>
+        </span>
+      </p>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+      </p>
+      <div class="resanlys_view_resource_area" id="resanlys_view_resource_fsa_20140901_0090">
+      </div>
+    </div>
+  </div>
+</li>
+<!-- package_item end -->
+
+
+
+
+
+
+<!-- package_item start -->
+<li class="list_dataset_item">
+  <div class="list_dataset_item_input_box">
+    <input id="checkbox_82909732-2ddd-4d81-ab2d-253fb209bbca" type="checkbox" class="checkbox_item" name="package_id" value="82909732-2ddd-4d81-ab2d-253fb209bbca"/>
+    <label for="checkbox_82909732-2ddd-4d81-ab2d-253fb209bbca">82909732-2ddd-4d81-ab2d-253fb209bbca</label>
+  </div>
+  <div class="list_dataset_item_main_box">
+    <div class="list_dataset_item_column_content">
+      <p class="mt-0 pc-mt-0 mb-3 pc-mb-3" style="overflow-wrap: anywhere;">
+        <a class="link_normal list_dataset_item_title" href="/data/dataset/reconstruction_20140904_0003">入札・公募公告</a>
+        
+
+<span class="popular ckan-icon ckan-icon-flame" title="最近の閲覧数 27" xmlns="http://www.w3.org/1999/xhtml">人気</span>
+
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        復興庁で行う入札・<mark>公募</mark>公告に係るデータセットである。
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        提供開始日:
+        2014-09-19
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        メタデータ更新日:
+        2023-06-06
+      </p>
+      <div class="star_rate_container mt-0 pc-mt-0 mb-4 pc-mb-4">
+        <span class="rate_label mr-2">評価</span><span class='star_rate star_rate_0' aria-hidden="true"></span>
+        <span class="rate_amount ml-1">(0)</span>
+      </div>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+        <span class="badge"> 
+          <a href="/data/dataset/reconstruction_20140904_0003" class="link_normal" data-format="html">HTML</a>
+        </span>
+      </p>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+      </p>
+      <div class="resanlys_view_resource_area" id="resanlys_view_resource_reconstruction_20140904_0003">
+      </div>
+    </div>
+  </div>
+</li>
+<!-- package_item end -->
+
+
+
+
+
+
+<!-- package_item start -->
+<li class="list_dataset_item">
+  <div class="list_dataset_item_input_box">
+    <input id="checkbox_574647ef-69bb-4a45-bccd-34e13ff82861" type="checkbox" class="checkbox_item" name="package_id" value="574647ef-69bb-4a45-bccd-34e13ff82861"/>
+    <label for="checkbox_574647ef-69bb-4a45-bccd-34e13ff82861">574647ef-69bb-4a45-bccd-34e13ff82861</label>
+  </div>
+  <div class="list_dataset_item_main_box">
+    <div class="list_dataset_item_column_content">
+      <p class="mt-0 pc-mt-0 mb-3 pc-mb-3" style="overflow-wrap: anywhere;">
+        <a class="link_normal list_dataset_item_title" href="/data/dataset/jftc_20220422_0001">公募に関する公告_令和３年度</a>
+        
+
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        公正取引委員会の調達情報（<mark>公募</mark>に関する公告_令和３年度）
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        提供開始日:
+        2022-08-17
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        メタデータ更新日:
+        2023-06-01
+      </p>
+      <div class="star_rate_container mt-0 pc-mt-0 mb-4 pc-mb-4">
+        <span class="rate_label mr-2">評価</span><span class='star_rate star_rate_0' aria-hidden="true"></span>
+        <span class="rate_amount ml-1">(0)</span>
+      </div>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+        <span class="badge"> 
+          <a href="/data/dataset/jftc_20220422_0001" class="link_normal" data-format="html">HTML</a>
+        </span>
+      </p>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+      </p>
+      <div class="resanlys_view_resource_area" id="resanlys_view_resource_jftc_20220422_0001">
+      </div>
+    </div>
+  </div>
+</li>
+<!-- package_item end -->
+
+
+
+
+
+
+<!-- package_item start -->
+<li class="list_dataset_item">
+  <div class="list_dataset_item_input_box">
+    <input id="checkbox_5e6c5513-ba6a-4818-b9ba-78c3704e20f5" type="checkbox" class="checkbox_item" name="package_id" value="5e6c5513-ba6a-4818-b9ba-78c3704e20f5"/>
+    <label for="checkbox_5e6c5513-ba6a-4818-b9ba-78c3704e20f5">5e6c5513-ba6a-4818-b9ba-78c3704e20f5</label>
+  </div>
+  <div class="list_dataset_item_main_box">
+    <div class="list_dataset_item_column_content">
+      <p class="mt-0 pc-mt-0 mb-3 pc-mb-3" style="overflow-wrap: anywhere;">
+        <a class="link_normal list_dataset_item_title" href="/data/dataset/jftc_20200526_0005">公募広告_令和元年度</a>
+        
+
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        公正取引委員会の調達情報（<mark>公募</mark>広告_令和元年度）
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        提供開始日:
+        2020-06-15
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        メタデータ更新日:
+        2023-06-01
+      </p>
+      <div class="star_rate_container mt-0 pc-mt-0 mb-4 pc-mb-4">
+        <span class="rate_label mr-2">評価</span><span class='star_rate star_rate_0' aria-hidden="true"></span>
+        <span class="rate_amount ml-1">(0)</span>
+      </div>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+        <span class="badge"> 
+          <a href="/data/dataset/jftc_20200526_0005" class="link_normal" data-format="html">HTML</a>
+        </span>
+      </p>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+      </p>
+      <div class="resanlys_view_resource_area" id="resanlys_view_resource_jftc_20200526_0005">
+      </div>
+    </div>
+  </div>
+</li>
+<!-- package_item end -->
+
+
+
+
+
+
+<!-- package_item start -->
+<li class="list_dataset_item">
+  <div class="list_dataset_item_input_box">
+    <input id="checkbox_8d20bad8-6d52-4c55-894b-dde0cdafb6a4" type="checkbox" class="checkbox_item" name="package_id" value="8d20bad8-6d52-4c55-894b-dde0cdafb6a4"/>
+    <label for="checkbox_8d20bad8-6d52-4c55-894b-dde0cdafb6a4">8d20bad8-6d52-4c55-894b-dde0cdafb6a4</label>
+  </div>
+  <div class="list_dataset_item_main_box">
+    <div class="list_dataset_item_column_content">
+      <p class="mt-0 pc-mt-0 mb-3 pc-mb-3" style="overflow-wrap: anywhere;">
+        <a class="link_normal list_dataset_item_title" href="/data/dataset/maff_20140918_0335">委託事業参加者の公募</a>
+        
+
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        林野庁で発注する委託事業の参加者の<mark>公募</mark>
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        提供開始日:
+        2014-09-20
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        メタデータ更新日:
+        2023-06-06
+      </p>
+      <div class="star_rate_container mt-0 pc-mt-0 mb-4 pc-mb-4">
+        <span class="rate_label mr-2">評価</span><span class='star_rate star_rate_0' aria-hidden="true"></span>
+        <span class="rate_amount ml-1">(0)</span>
+      </div>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+        <span class="badge"> 
+          <a href="/data/dataset/maff_20140918_0335" class="link_normal" data-format="html">HTML</a>
+        </span>
+      </p>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+      </p>
+      <div class="resanlys_view_resource_area" id="resanlys_view_resource_maff_20140918_0335">
+      </div>
+    </div>
+  </div>
+</li>
+<!-- package_item end -->
+
+
+
+
+
+
+<!-- package_item start -->
+<li class="list_dataset_item">
+  <div class="list_dataset_item_input_box">
+    <input id="checkbox_2dad25dc-7883-47f9-81be-cfd7a2f94707" type="checkbox" class="checkbox_item" name="package_id" value="2dad25dc-7883-47f9-81be-cfd7a2f94707"/>
+    <label for="checkbox_2dad25dc-7883-47f9-81be-cfd7a2f94707">2dad25dc-7883-47f9-81be-cfd7a2f94707</label>
+  </div>
+  <div class="list_dataset_item_main_box">
+    <div class="list_dataset_item_column_content">
+      <p class="mt-0 pc-mt-0 mb-3 pc-mb-3" style="overflow-wrap: anywhere;">
+        <a class="link_normal list_dataset_item_title" href="/data/dataset/mhlw_20140917_0386">調達情報一覧(厚生労働省本省)_物品の製造・販売等にかかる公告・公示_その他_企画競争・公募公告</a>
+        
+
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        <p class="empty">このデータセットには説明がありません</p>
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        提供開始日:
+        2014-09-20
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        メタデータ更新日:
+        2023-08-08
+      </p>
+      <div class="star_rate_container mt-0 pc-mt-0 mb-4 pc-mb-4">
+        <span class="rate_label mr-2">評価</span><span class='star_rate star_rate_0' aria-hidden="true"></span>
+        <span class="rate_amount ml-1">(0)</span>
+      </div>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+        <span class="badge"> 
+          <a href="/data/dataset/mhlw_20140917_0386" class="link_normal" data-format="html">HTML</a>
+        </span>
+      </p>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+      </p>
+      <div class="resanlys_view_resource_area" id="resanlys_view_resource_mhlw_20140917_0386">
+      </div>
+    </div>
+  </div>
+</li>
+<!-- package_item end -->
+
+
+
+
+
+
+<!-- package_item start -->
+<li class="list_dataset_item">
+  <div class="list_dataset_item_input_box">
+    <input id="checkbox_6d5b7529-7978-4cf9-a98c-c3b378cc9bf1" type="checkbox" class="checkbox_item" name="package_id" value="6d5b7529-7978-4cf9-a98c-c3b378cc9bf1"/>
+    <label for="checkbox_6d5b7529-7978-4cf9-a98c-c3b378cc9bf1">6d5b7529-7978-4cf9-a98c-c3b378cc9bf1</label>
+  </div>
+  <div class="list_dataset_item_main_box">
+    <div class="list_dataset_item_column_content">
+      <p class="mt-0 pc-mt-0 mb-3 pc-mb-3" style="overflow-wrap: anywhere;">
+        <a class="link_normal list_dataset_item_title" href="/data/dataset/maff_20140918_0226">入札情報</a>
+        
+
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        農林水産本省が発注する入札等の情報
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        提供開始日:
+        2014-09-20
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        メタデータ更新日:
+        2023-06-02
+      </p>
+      <div class="star_rate_container mt-0 pc-mt-0 mb-4 pc-mb-4">
+        <span class="rate_label mr-2">評価</span><span class='star_rate star_rate_0' aria-hidden="true"></span>
+        <span class="rate_amount ml-1">(0)</span>
+      </div>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+        <span class="badge"> 
+          <a href="/data/dataset/maff_20140918_0226" class="link_normal" data-format="html">HTML</a>
+        </span>
+      </p>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+      </p>
+      <div class="resanlys_view_resource_area" id="resanlys_view_resource_maff_20140918_0226">
+      </div>
+    </div>
+  </div>
+</li>
+<!-- package_item end -->
+
+
+
+
+
+
+<!-- package_item start -->
+<li class="list_dataset_item">
+  <div class="list_dataset_item_input_box">
+    <input id="checkbox_7a47521c-c5ac-4aef-abd7-44a099f986b7" type="checkbox" class="checkbox_item" name="package_id" value="7a47521c-c5ac-4aef-abd7-44a099f986b7"/>
+    <label for="checkbox_7a47521c-c5ac-4aef-abd7-44a099f986b7">7a47521c-c5ac-4aef-abd7-44a099f986b7</label>
+  </div>
+  <div class="list_dataset_item_main_box">
+    <div class="list_dataset_item_column_content">
+      <p class="mt-0 pc-mt-0 mb-3 pc-mb-3" style="overflow-wrap: anywhere;">
+        <a class="link_normal list_dataset_item_title" href="/data/dataset/mhlw_20140917_1077">障害者福祉_調査事業等の公募_5 発達障害者支援者実地研修事業</a>
+        
+
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        <p class="empty">このデータセットには説明がありません</p>
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        提供開始日:
+        2014-09-20
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        メタデータ更新日:
+        2023-06-03
+      </p>
+      <div class="star_rate_container mt-0 pc-mt-0 mb-4 pc-mb-4">
+        <span class="rate_label mr-2">評価</span><span class='star_rate star_rate_0' aria-hidden="true"></span>
+        <span class="rate_amount ml-1">(0)</span>
+      </div>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+        <span class="badge"> 
+          <a href="/data/dataset/mhlw_20140917_1077" class="link_normal" data-format="html">HTML</a>
+        </span>
+      </p>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+      </p>
+      <div class="resanlys_view_resource_area" id="resanlys_view_resource_mhlw_20140917_1077">
+      </div>
+    </div>
+  </div>
+</li>
+<!-- package_item end -->
+
+
+
+
+
+
+<!-- package_item start -->
+<li class="list_dataset_item">
+  <div class="list_dataset_item_input_box">
+    <input id="checkbox_972f34c6-ea42-48c0-bd64-5b8fe09fb103" type="checkbox" class="checkbox_item" name="package_id" value="972f34c6-ea42-48c0-bd64-5b8fe09fb103"/>
+    <label for="checkbox_972f34c6-ea42-48c0-bd64-5b8fe09fb103">972f34c6-ea42-48c0-bd64-5b8fe09fb103</label>
+  </div>
+  <div class="list_dataset_item_main_box">
+    <div class="list_dataset_item_column_content">
+      <p class="mt-0 pc-mt-0 mb-3 pc-mb-3" style="overflow-wrap: anywhere;">
+        <a class="link_normal list_dataset_item_title" href="/data/dataset/clb_20200526_0006">入札公告等_公募公告_令和2年度</a>
+        
+
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        入札公告等_<mark>公募</mark>公告_令和2年度
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        提供開始日:
+        2020-06-15
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        メタデータ更新日:
+        2026-06-19
+      </p>
+      <div class="star_rate_container mt-0 pc-mt-0 mb-4 pc-mb-4">
+        <span class="rate_label mr-2">評価</span><span class='star_rate star_rate_0' aria-hidden="true"></span>
+        <span class="rate_amount ml-1">(0)</span>
+      </div>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+        <span class="badge"> 
+          <a href="/data/dataset/clb_20200526_0006" class="link_normal" data-format="html">HTML</a>
+        </span>
+      </p>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+      </p>
+      <div class="resanlys_view_resource_area" id="resanlys_view_resource_clb_20200526_0006">
+      </div>
+    </div>
+  </div>
+</li>
+<!-- package_item end -->
+
+
+
+
+
+
+<!-- package_item start -->
+<li class="list_dataset_item">
+  <div class="list_dataset_item_input_box">
+    <input id="checkbox_16b1ddfd-d46f-424b-9fb9-35ae1300ce54" type="checkbox" class="checkbox_item" name="package_id" value="16b1ddfd-d46f-424b-9fb9-35ae1300ce54"/>
+    <label for="checkbox_16b1ddfd-d46f-424b-9fb9-35ae1300ce54">16b1ddfd-d46f-424b-9fb9-35ae1300ce54</label>
+  </div>
+  <div class="list_dataset_item_main_box">
+    <div class="list_dataset_item_column_content">
+      <p class="mt-0 pc-mt-0 mb-3 pc-mb-3" style="overflow-wrap: anywhere;">
+        <a class="link_normal list_dataset_item_title" href="/data/dataset/clb_20170313_0001">入札公告等_公募公告_平成29年度</a>
+        
+
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        入札公告等_<mark>公募</mark>公告_平成29年度
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        提供開始日:
+        2017-03-19
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        メタデータ更新日:
+        2026-06-19
+      </p>
+      <div class="star_rate_container mt-0 pc-mt-0 mb-4 pc-mb-4">
+        <span class="rate_label mr-2">評価</span><span class='star_rate star_rate_0' aria-hidden="true"></span>
+        <span class="rate_amount ml-1">(0)</span>
+      </div>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+        <span class="badge"> 
+          <a href="/data/dataset/clb_20170313_0001" class="link_normal" data-format="html">HTML</a>
+        </span>
+      </p>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+      </p>
+      <div class="resanlys_view_resource_area" id="resanlys_view_resource_clb_20170313_0001">
+      </div>
+    </div>
+  </div>
+</li>
+<!-- package_item end -->
+
+
+
+
+
+
+<!-- package_item start -->
+<li class="list_dataset_item">
+  <div class="list_dataset_item_input_box">
+    <input id="checkbox_5908271e-affd-472d-894d-8af8b5434f4a" type="checkbox" class="checkbox_item" name="package_id" value="5908271e-affd-472d-894d-8af8b5434f4a"/>
+    <label for="checkbox_5908271e-affd-472d-894d-8af8b5434f4a">5908271e-affd-472d-894d-8af8b5434f4a</label>
+  </div>
+  <div class="list_dataset_item_main_box">
+    <div class="list_dataset_item_column_content">
+      <p class="mt-0 pc-mt-0 mb-3 pc-mb-3" style="overflow-wrap: anywhere;">
+        <a class="link_normal list_dataset_item_title" href="/data/dataset/clb_20190516_0014">入札公告等_公募公告_令和元年度</a>
+        
+
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        入札公告等_<mark>公募</mark>公告_令和元年度
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        提供開始日:
+        2019-11-20
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        メタデータ更新日:
+        2026-06-19
+      </p>
+      <div class="star_rate_container mt-0 pc-mt-0 mb-4 pc-mb-4">
+        <span class="rate_label mr-2">評価</span><span class='star_rate star_rate_0' aria-hidden="true"></span>
+        <span class="rate_amount ml-1">(0)</span>
+      </div>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+        <span class="badge"> 
+          <a href="/data/dataset/clb_20190516_0014" class="link_normal" data-format="html">HTML</a>
+        </span>
+      </p>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+      </p>
+      <div class="resanlys_view_resource_area" id="resanlys_view_resource_clb_20190516_0014">
+      </div>
+    </div>
+  </div>
+</li>
+<!-- package_item end -->
+
+
+
+
+
+
+<!-- package_item start -->
+<li class="list_dataset_item">
+  <div class="list_dataset_item_input_box">
+    <input id="checkbox_288a721c-345b-43d9-9e5d-ec451ce63fe7" type="checkbox" class="checkbox_item" name="package_id" value="288a721c-345b-43d9-9e5d-ec451ce63fe7"/>
+    <label for="checkbox_288a721c-345b-43d9-9e5d-ec451ce63fe7">288a721c-345b-43d9-9e5d-ec451ce63fe7</label>
+  </div>
+  <div class="list_dataset_item_main_box">
+    <div class="list_dataset_item_column_content">
+      <p class="mt-0 pc-mt-0 mb-3 pc-mb-3" style="overflow-wrap: anywhere;">
+        <a class="link_normal list_dataset_item_title" href="/data/dataset/mod_20140905_0211">公募に関する公示</a>
+        
+
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        九州防衛局および熊本防衛支局における入札公告を掲載
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        提供開始日:
+        2014-09-19
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        メタデータ更新日:
+        2025-05-21
+      </p>
+      <div class="star_rate_container mt-0 pc-mt-0 mb-4 pc-mb-4">
+        <span class="rate_label mr-2">評価</span><span class='star_rate star_rate_0' aria-hidden="true"></span>
+        <span class="rate_amount ml-1">(0)</span>
+      </div>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+        <span class="badge"> 
+          <a href="/data/dataset/mod_20140905_0211" class="link_normal" data-format="html">HTML</a>
+        </span>
+      </p>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+      </p>
+      <div class="resanlys_view_resource_area" id="resanlys_view_resource_mod_20140905_0211">
+      </div>
+    </div>
+  </div>
+</li>
+<!-- package_item end -->
+
+
+
+
+
+
+<!-- package_item start -->
+<li class="list_dataset_item">
+  <div class="list_dataset_item_input_box">
+    <input id="checkbox_518ebd6b-a6d9-45e6-b87a-b874e0ad4e9c" type="checkbox" class="checkbox_item" name="package_id" value="518ebd6b-a6d9-45e6-b87a-b874e0ad4e9c"/>
+    <label for="checkbox_518ebd6b-a6d9-45e6-b87a-b874e0ad4e9c">518ebd6b-a6d9-45e6-b87a-b874e0ad4e9c</label>
+  </div>
+  <div class="list_dataset_item_main_box">
+    <div class="list_dataset_item_column_content">
+      <p class="mt-0 pc-mt-0 mb-3 pc-mb-3" style="overflow-wrap: anywhere;">
+        <a class="link_normal list_dataset_item_title" href="/data/dataset/jftc_20240506_0405">公募に関する公告_令和４年度</a>
+        
+
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        公正取引委員会の調達情報（<mark>公募</mark>に関する公告_令和４年度）
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        提供開始日:
+        2024-05-06
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        メタデータ更新日:
+        2024-05-06
+      </p>
+      <div class="star_rate_container mt-0 pc-mt-0 mb-4 pc-mb-4">
+        <span class="rate_label mr-2">評価</span><span class='star_rate star_rate_0' aria-hidden="true"></span>
+        <span class="rate_amount ml-1">(0)</span>
+      </div>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+        <span class="badge"> 
+          <a href="/data/dataset/jftc_20240506_0405" class="link_normal" data-format="html">HTML</a>
+        </span>
+      </p>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+      </p>
+      <div class="resanlys_view_resource_area" id="resanlys_view_resource_jftc_20240506_0405">
+      </div>
+    </div>
+  </div>
+</li>
+<!-- package_item end -->
+
+
+
+
+
+
+<!-- package_item start -->
+<li class="list_dataset_item">
+  <div class="list_dataset_item_input_box">
+    <input id="checkbox_c40c0db0-1fce-43d6-ae37-24fe9a1e71fa" type="checkbox" class="checkbox_item" name="package_id" value="c40c0db0-1fce-43d6-ae37-24fe9a1e71fa"/>
+    <label for="checkbox_c40c0db0-1fce-43d6-ae37-24fe9a1e71fa">c40c0db0-1fce-43d6-ae37-24fe9a1e71fa</label>
+  </div>
+  <div class="list_dataset_item_main_box">
+    <div class="list_dataset_item_column_content">
+      <p class="mt-0 pc-mt-0 mb-3 pc-mb-3" style="overflow-wrap: anywhere;">
+        <a class="link_normal list_dataset_item_title" href="/data/dataset/clb_20180312_0003">入札公告等_公募公告_平成30年度</a>
+        
+
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        入札公告等_<mark>公募</mark>公告_平成30年度
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        提供開始日:
+        2018-03-16
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        メタデータ更新日:
+        2026-06-19
+      </p>
+      <div class="star_rate_container mt-0 pc-mt-0 mb-4 pc-mb-4">
+        <span class="rate_label mr-2">評価</span><span class='star_rate star_rate_0' aria-hidden="true"></span>
+        <span class="rate_amount ml-1">(0)</span>
+      </div>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+        <span class="badge"> 
+          <a href="/data/dataset/clb_20180312_0003" class="link_normal" data-format="html">HTML</a>
+        </span>
+      </p>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+      </p>
+      <div class="resanlys_view_resource_area" id="resanlys_view_resource_clb_20180312_0003">
+      </div>
+    </div>
+  </div>
+</li>
+<!-- package_item end -->
+
+
+
+
+
+
+<!-- package_item start -->
+<li class="list_dataset_item">
+  <div class="list_dataset_item_input_box">
+    <input id="checkbox_18412dc2-09db-4e62-886e-16917c716fc4" type="checkbox" class="checkbox_item" name="package_id" value="18412dc2-09db-4e62-886e-16917c716fc4"/>
+    <label for="checkbox_18412dc2-09db-4e62-886e-16917c716fc4">18412dc2-09db-4e62-886e-16917c716fc4</label>
+  </div>
+  <div class="list_dataset_item_main_box">
+    <div class="list_dataset_item_column_content">
+      <p class="mt-0 pc-mt-0 mb-3 pc-mb-3" style="overflow-wrap: anywhere;">
+        <a class="link_normal list_dataset_item_title" href="/data/dataset/clb_20210222_0014">入札公告等_公募公告_令和3年度</a>
+        
+
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        入札公告等_<mark>公募</mark>公告_令和3年度
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        提供開始日:
+        2021-03-26
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        メタデータ更新日:
+        2023-05-25
+      </p>
+      <div class="star_rate_container mt-0 pc-mt-0 mb-4 pc-mb-4">
+        <span class="rate_label mr-2">評価</span><span class='star_rate star_rate_0' aria-hidden="true"></span>
+        <span class="rate_amount ml-1">(0)</span>
+      </div>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+        <span class="badge"> 
+          <a href="/data/dataset/clb_20210222_0014" class="link_normal" data-format="html">HTML</a>
+        </span>
+      </p>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+      </p>
+      <div class="resanlys_view_resource_area" id="resanlys_view_resource_clb_20210222_0014">
+      </div>
+    </div>
+  </div>
+</li>
+<!-- package_item end -->
+
+
+
+
+
+
+<!-- package_item start -->
+<li class="list_dataset_item">
+  <div class="list_dataset_item_input_box">
+    <input id="checkbox_96938b4f-4975-4434-8ad0-8032ba576bc0" type="checkbox" class="checkbox_item" name="package_id" value="96938b4f-4975-4434-8ad0-8032ba576bc0"/>
+    <label for="checkbox_96938b4f-4975-4434-8ad0-8032ba576bc0">96938b4f-4975-4434-8ad0-8032ba576bc0</label>
+  </div>
+  <div class="list_dataset_item_main_box">
+    <div class="list_dataset_item_column_content">
+      <p class="mt-0 pc-mt-0 mb-3 pc-mb-3" style="overflow-wrap: anywhere;">
+        <a class="link_normal list_dataset_item_title" href="/data/dataset/jftc_20150901_0007">調達情報</a>
+        
+
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        公正取引委員会の調達情報（一般競争入札、企画競争、<mark>公募</mark>に関する公告等）
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        提供開始日:
+        2015-09-07
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        メタデータ更新日:
+        2023-06-07
+      </p>
+      <div class="star_rate_container mt-0 pc-mt-0 mb-4 pc-mb-4">
+        <span class="rate_label mr-2">評価</span><span class='star_rate star_rate_0' aria-hidden="true"></span>
+        <span class="rate_amount ml-1">(0)</span>
+      </div>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+        <span class="badge"> 
+          <a href="/data/dataset/jftc_20150901_0007" class="link_normal" data-format="html">HTML</a>
+        </span>
+      </p>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+      </p>
+      <div class="resanlys_view_resource_area" id="resanlys_view_resource_jftc_20150901_0007">
+      </div>
+    </div>
+  </div>
+</li>
+<!-- package_item end -->
+
+
+
+
+
+
+<!-- package_item start -->
+<li class="list_dataset_item">
+  <div class="list_dataset_item_input_box">
+    <input id="checkbox_2eeefac9-caf6-4967-a119-8a3255f31ec5" type="checkbox" class="checkbox_item" name="package_id" value="2eeefac9-caf6-4967-a119-8a3255f31ec5"/>
+    <label for="checkbox_2eeefac9-caf6-4967-a119-8a3255f31ec5">2eeefac9-caf6-4967-a119-8a3255f31ec5</label>
+  </div>
+  <div class="list_dataset_item_main_box">
+    <div class="list_dataset_item_column_content">
+      <p class="mt-0 pc-mt-0 mb-3 pc-mb-3" style="overflow-wrap: anywhere;">
+        <a class="link_normal list_dataset_item_title" href="/data/dataset/mhlw_20140917_1079">障害者福祉_調査事業等の公募_7 国連・障害者の十年記念施設運営事業</a>
+        
+
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        <p class="empty">このデータセットには説明がありません</p>
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        提供開始日:
+        2014-09-20
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        メタデータ更新日:
+        2023-05-27
+      </p>
+      <div class="star_rate_container mt-0 pc-mt-0 mb-4 pc-mb-4">
+        <span class="rate_label mr-2">評価</span><span class='star_rate star_rate_0' aria-hidden="true"></span>
+        <span class="rate_amount ml-1">(0)</span>
+      </div>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+        <span class="badge"> 
+          <a href="/data/dataset/mhlw_20140917_1079" class="link_normal" data-format="html">HTML</a>
+        </span>
+        <span class="badge"> 
+          <a href="/data/dataset/mhlw_20140917_1079" class="link_normal" data-format="doc">DOC</a>
+        </span>
+      </p>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+      </p>
+      <div class="resanlys_view_resource_area" id="resanlys_view_resource_mhlw_20140917_1079">
+      </div>
+    </div>
+  </div>
+</li>
+<!-- package_item end -->
+
+
+
+
+
+
+<!-- package_item start -->
+<li class="list_dataset_item">
+  <div class="list_dataset_item_input_box">
+    <input id="checkbox_687a705d-05dc-4d48-9a5f-533f90d3c5ab" type="checkbox" class="checkbox_item" name="package_id" value="687a705d-05dc-4d48-9a5f-533f90d3c5ab"/>
+    <label for="checkbox_687a705d-05dc-4d48-9a5f-533f90d3c5ab">687a705d-05dc-4d48-9a5f-533f90d3c5ab</label>
+  </div>
+  <div class="list_dataset_item_main_box">
+    <div class="list_dataset_item_column_content">
+      <p class="mt-0 pc-mt-0 mb-3 pc-mb-3" style="overflow-wrap: anywhere;">
+        <a class="link_normal list_dataset_item_title" href="/data/dataset/mext_20170630_0009">平成28年度からの共同利用・共同研究拠点の認定について（国立大学）</a>
+        
+
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        平成28年度からの共同利用・共同研究拠点の<mark>公募</mark>及び認定結果等（国立大学）
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        提供開始日:
+        2017-06-30
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        メタデータ更新日:
+        2023-04-07
+      </p>
+      <div class="star_rate_container mt-0 pc-mt-0 mb-4 pc-mb-4">
+        <span class="rate_label mr-2">評価</span><span class='star_rate star_rate_0' aria-hidden="true"></span>
+        <span class="rate_amount ml-1">(0)</span>
+      </div>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+        <span class="badge"> 
+          <a href="/data/dataset/mext_20170630_0009" class="link_normal" data-format="pdf">PDF</a>
+        </span>
+      </p>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+      </p>
+      <div class="resanlys_view_resource_area" id="resanlys_view_resource_mext_20170630_0009">
+      </div>
+    </div>
+  </div>
+</li>
+<!-- package_item end -->
+
+
+
+
+
+
+<!-- package_item start -->
+<li class="list_dataset_item">
+  <div class="list_dataset_item_input_box">
+    <input id="checkbox_5020ea4b-b236-480e-9bf9-7b5a3f6d578a" type="checkbox" class="checkbox_item" name="package_id" value="5020ea4b-b236-480e-9bf9-7b5a3f6d578a"/>
+    <label for="checkbox_5020ea4b-b236-480e-9bf9-7b5a3f6d578a">5020ea4b-b236-480e-9bf9-7b5a3f6d578a</label>
+  </div>
+  <div class="list_dataset_item_main_box">
+    <div class="list_dataset_item_column_content">
+      <p class="mt-0 pc-mt-0 mb-3 pc-mb-3" style="overflow-wrap: anywhere;">
+        <a class="link_normal list_dataset_item_title" href="/data/dataset/mext_20140912_0159">調達情報_調達計画</a>
+        
+
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        文部科学省及び所管法人の政府調達案件に係る調達計画の公示
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        提供開始日:
+        2014-09-20
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        メタデータ更新日:
+        2023-05-31
+      </p>
+      <div class="star_rate_container mt-0 pc-mt-0 mb-4 pc-mb-4">
+        <span class="rate_label mr-2">評価</span><span class='star_rate star_rate_0' aria-hidden="true"></span>
+        <span class="rate_amount ml-1">(0)</span>
+      </div>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+        <span class="badge"> 
+          <a href="/data/dataset/mext_20140912_0159" class="link_normal" data-format="html">HTML</a>
+        </span>
+      </p>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+      </p>
+      <div class="resanlys_view_resource_area" id="resanlys_view_resource_mext_20140912_0159">
+      </div>
+    </div>
+  </div>
+</li>
+<!-- package_item end -->
+
+
+
+
+
+
+<!-- package_item start -->
+<li class="list_dataset_item">
+  <div class="list_dataset_item_input_box">
+    <input id="checkbox_3e3c5ae1-d51a-481b-9e33-dc655202d7a2" type="checkbox" class="checkbox_item" name="package_id" value="3e3c5ae1-d51a-481b-9e33-dc655202d7a2"/>
+    <label for="checkbox_3e3c5ae1-d51a-481b-9e33-dc655202d7a2">3e3c5ae1-d51a-481b-9e33-dc655202d7a2</label>
+  </div>
+  <div class="list_dataset_item_main_box">
+    <div class="list_dataset_item_column_content">
+      <p class="mt-0 pc-mt-0 mb-3 pc-mb-3" style="overflow-wrap: anywhere;">
+        <a class="link_normal list_dataset_item_title" href="/data/dataset/maff_20140918_0235">入札情報_委託事業参加者の公募</a>
+        
+
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        農林水産本省が発注する入札等の情報のうち委託事業に係るもの
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        提供開始日:
+        2014-09-20
+      </p>
+      <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+        メタデータ更新日:
+        2023-05-30
+      </p>
+      <div class="star_rate_container mt-0 pc-mt-0 mb-4 pc-mb-4">
+        <span class="rate_label mr-2">評価</span><span class='star_rate star_rate_0' aria-hidden="true"></span>
+        <span class="rate_amount ml-1">(0)</span>
+      </div>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+        <span class="badge"> 
+          <a href="/data/dataset/maff_20140918_0235" class="link_normal" data-format="html">HTML</a>
+        </span>
+      </p>
+      <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+      </p>
+      <div class="resanlys_view_resource_area" id="resanlys_view_resource_maff_20140918_0235">
+      </div>
+    </div>
+  </div>
+</li>
+<!-- package_item end -->
+    </ul>
+  </fieldset>
+  <div class="package-download mb-5 pc-mb-5">
+    <button type="button" 
+            class="btn_normal btn_padding_rl31 mt-0 pc-mt-0"
+            data-module="metadata_download"
+            data-module-action="metadata_download">
+      メタ情報取得
+    </button>
+    <div class="input_error mt-0 pc-mt-0 mb-0 pc-mb-0" 
+         style="display:none;"
+         data-message-type="metadata_download">
+      <span class="message_icon error error_icon_position"
+            role="img"
+            aria-hidden="true"></span>
+      <p class="error_message_title">
+        データセットを1つ以上選択してください
+      </p>
+    </div>
+  </div>
+</form>
+<!-- package_list end -->
+<div class="pager_container mt-0 pc-mt-0 mb-5 pc-mb-0">
+  
+  
+  
+  
+  
+  <!-- <div class="col center-block"> -->
+    
+      
+        <button class="pager_fast_rewind" aria-label="1ページ目に戻る"></button>
+        <button class="pager_previous" aria-label="前のページに戻る"></button>
+      
+      <select class="form_select pc-mt-0 mb-0 pc-mb-0" name="page" title="指定ページに移動する" aria-label="指定ページに移動する" data-module="change_loading">
+        
+          
+            <option value=1 SELECTED>1</option>
+          
+        
+          
+            <option value=2>2</option>
+          
+        
+          
+            <option value=3>3</option>
+          
+        
+          
+            <option value=4>4</option>
+          
+        
+      </select>
+      
+        <span class="text_px12">
+          
+          
+          <span style="word-break: initial">/4</span>
+        </span>
+      
+      
+        <button class="pager_next" aria-label="次のページに進む" data-module="click_loading" data-target_page="2"></button>
+        <button class="pager_fast_forward" aria-label="最終ページに進む" data-module="click_loading" data-target_page="4"></button>
+      
+    
+  <!-- </div> --></div>
+<section class="module">
+  <div class="module-content">
+    <small>
+    </small>
+  </div>
+</section>
+</div>
+<!-- search primary_content end -->
+              </div>
+            
+
+
+
+        
+      <!-- </div> -->
+    </div>
+  </main>
+  
+
+  
+      <footer>
+    <div class="footer_inner">
+        <ul class="footer_items mt-0 pc-mt-0 mb-2 pc-mb-4">
+            <li><a href="/info/about-site">このサイトについて</a></li>
+            <li><a href="/info/service-policy">ご利用にあたって</a></li>
+            <li><a href="/info/help">ヘルプ</a></li>
+            <li><a href="/info/terms">利用規約</a></li>
+            <li><a href="/info/privacy-policy">個人情報取扱方針</a></li>
+            <li><a href="/info/contacts">お問合せ</a></li>
+            <li><a href="https://data.e-gov.go.jp/info/dashboard/metrics">ダッシュボード</a></li>
+            <li><a href="/info/site-map">サイトマップ</a></li>
+        </ul>
+        <p class="copy_right" lang="en">Copyright © Digital Agency All Rights Reserved.</p>
+    </div>
+</footer>
+    <div>
+      <a class="to_pagetop" role="button" href="#contents">ページトップへ移動</a>
+    </div>
+
+
+  
+  
+  
+    
+  
+  
+  
+    
+  
+  
+  
+  
+  
+  
+
+
+      
+
+    
+    
+    
+    <script src="/data/webassets/vendor/d8ae4bed_jquery.js" type="text/javascript"></script>
+<script src="/data/webassets/vendor/fb6095a0_vendor.js" type="text/javascript"></script>
+<script src="/data/webassets/vendor/580fa18d_bootstrap.js" type="text/javascript"></script>
+<script src="/data/webassets/base/8597cdcc_main.js" type="text/javascript"></script>
+<script src="/data/webassets/ckanext-datasetslist-theme/4739d845_jquery-ui-min-js.js" type="text/javascript"></script>
+<script src="/data/webassets/base/19c28fdb_ckan.js" type="text/javascript"></script>
+<script src="/data/webassets/base/cd2c0272_tracking.js" type="text/javascript"></script>
+<script src="/data/webassets/ckanext-datasetslist-theme/9cad9e6d_datasetslist_theme_js.js" type="text/javascript"></script>
+<script src="/data/webassets/ckanext-datasetslist-theme/169dffff_datasetslist_theme_form_tooltip_js.js" type="text/javascript"></script>
+<script src="/data/webassets/ckanext-datasetslist-theme/4d255bdc_typeahead_js.js" type="text/javascript"></script>
+<script src="/data/webassets/ckanext-datasetslist-theme/f831a5b6_suggest_js.js" type="text/javascript"></script>
+<script src="/data/webassets/ckanext-datasetslist-theme/ab1b9d49_rating_js.js" type="text/javascript"></script>
+<script src="/data/webassets/ckanext-datasetslist-theme/dec0930d_get_template_js.js" type="text/javascript"></script>
+  </body>
+</html>

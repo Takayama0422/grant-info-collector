@@ -1,0 +1,63 @@
+{
+  "note": "e-Govデータポータルから取得した応答の写し。ネットワーク無しで動作を再現するために同梱する。出典: e-Govデータポータル（デジタル庁）／公共データ利用規約（第1.0版）PDL1.0",
+  "captured_at": "2026-08-24T17:25:44.034Z",
+  "config": "config/sources.json",
+  "entries": {
+    "https://data.e-gov.go.jp/robots.txt": {
+      "status": 404,
+      "file": null
+    },
+    "https://data.e-gov.go.jp/data/robots.txt": {
+      "status": 200,
+      "file": "24bd913b7b41.txt"
+    },
+    "https://data.e-gov.go.jp/data/dataset?q=%E8%A3%9C%E5%8A%A9%E9%87%91": {
+      "status": 200,
+      "file": "d337f872dd56.html"
+    },
+    "https://data.e-gov.go.jp/data/dataset?q=%E8%A3%9C%E5%8A%A9%E9%87%91&organization=org_1700": {
+      "status": 200,
+      "file": "1270224d8b27.html"
+    },
+    "https://data.e-gov.go.jp/data/dataset?q=%E8%A3%9C%E5%8A%A9%E9%87%91&organization=org_1400": {
+      "status": 200,
+      "file": "42e46df5c7e1.html"
+    },
+    "https://data.e-gov.go.jp/data/dataset?q=%E8%A3%9C%E5%8A%A9%E9%87%91&organization=org_1100": {
+      "status": 200,
+      "file": "3d481818944b.html"
+    },
+    "https://data.e-gov.go.jp/data/dataset?q=%E5%8A%A9%E6%88%90%E9%87%91": {
+      "status": 200,
+      "file": "37bafb0a778d.html"
+    },
+    "https://data.e-gov.go.jp/data/dataset?q=%E5%8A%A9%E6%88%90%E9%87%91&organization=org_1700": {
+      "status": 200,
+      "file": "58ff2ce8cf74.html"
+    },
+    "https://data.e-gov.go.jp/data/dataset?q=%E5%8A%A9%E6%88%90%E9%87%91&organization=org_1600": {
+      "status": 200,
+      "file": "cf9fe53f3038.html"
+    },
+    "https://data.e-gov.go.jp/data/dataset?q=%E5%8A%A9%E6%88%90%E9%87%91&organization=org_0400": {
+      "status": 200,
+      "file": "76474991d101.html"
+    },
+    "https://data.e-gov.go.jp/data/dataset?q=%E5%85%AC%E5%8B%9F": {
+      "status": 200,
+      "file": "a2ee08d098c5.html"
+    },
+    "https://data.e-gov.go.jp/data/dataset?q=%E5%85%AC%E5%8B%9F&organization=org_1600": {
+      "status": 200,
+      "file": "7e59b1eb4f45.html"
+    },
+    "https://data.e-gov.go.jp/data/dataset?q=%E5%85%AC%E5%8B%9F&organization=org_2100": {
+      "status": 200,
+      "file": "62935f8e525b.html"
+    },
+    "https://data.e-gov.go.jp/data/dataset?q=%E5%85%AC%E5%8B%9F&organization=org_0300": {
+      "status": 200,
+      "file": "195ee2774adf.html"
+    }
+  }
+}

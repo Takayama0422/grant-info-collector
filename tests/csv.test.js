@@ -32,3 +32,17 @@ test('欠損値は空文字として扱う', () => {
   assert.equal(sanitizeCsvCell(null), '');
   assert.equal(sanitizeCsvCell(undefined), '');
 });
+
+test('出典・加工主体の注記をファイル末尾に埋め込む', () => {
+  const { NOTICE_LINES } = require('../src/notice');
+  const csv = rowsToCsv([{ title: 'テスト' }], NOTICE_LINES);
+  const lines = csv.trimEnd().split('\r\n');
+  assert.match(lines.at(0), /"collected_at"/);
+  assert.match(lines.at(1), /"テスト"/);
+  assert.match(lines.at(2), /^# 出典：e-Govデータポータル/);
+  assert.ok(lines.some((line) => line.startsWith('# 加工主体：')));
+});
+
+test('注記を渡さなければ余計な行を足さない', () => {
+  assert.equal(rowsToCsv([{ title: 'テスト' }]).trimEnd().split('\r\n').length, 2);
+});

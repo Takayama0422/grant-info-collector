@@ -1,11 +1,14 @@
 node_modules/
 .DS_Store
 
-# 実行時の成果物（reports/sample のみ成果例として追跡する）
+# 実行時の成果物（reports/example-run と reports/sample は成果例として追跡する）
 reports/runs/
 reports/latest/
 reports/latest.json
 reports/test/
+reports/ci/
+reports/verify-online/
+reports/verify-offline/
 
 # 認証情報（.env.local のような派生名も含めて除外する）
 .env
@@ -15,3 +18,6 @@ reports/test/
 *.key
 *.crt
 *.p12
+
+# 制作中の内部メモ（公開する成果物ではない）
+LOG.md
